@@ -19,7 +19,7 @@ export const auth = betterAuth({
         before: async (user: { email?: string; [key: string]: unknown }) => {
           if (!user.email?.endsWith("@asu.edu")) {
             throw new APIError("FORBIDDEN", {
-              message: "Only @asu.edu email addresses are allowed to register",
+              message: "INVALID_DOMAIN",
             });
           }
           return { data: user };
