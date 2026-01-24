@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 import { signInWithGoogle, signOut, useSession } from "@/lib/auth-client";
 import {
   Badge,
@@ -42,8 +43,17 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
-      <Card gradient className="w-full max-w-md">
-        <div className="flex flex-col items-center gap-6">
+      <Tilt
+        glareEnable={true}
+        glareMaxOpacity={0.15}
+        tiltMaxAngleX={10}
+        tiltMaxAngleY={10}
+        scale={1.02}
+        transitionSpeed={500}
+        className="w-full max-w-md"
+      >
+        <Card gradient className="w-full">
+          <div className="flex flex-col items-center gap-6">
           <Heading level="h4" animate={false}>
             ASU Claude Builder Club
           </Heading>
@@ -95,8 +105,9 @@ export default function LoginPage() {
               </motion.p>
             </div>
           )}
-        </div>
-      </Card>
+          </div>
+        </Card>
+      </Tilt>
     </div>
   );
 }
