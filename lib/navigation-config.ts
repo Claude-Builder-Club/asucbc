@@ -64,18 +64,6 @@ export const getNavigationItems = (): NavigationItem[] => {
       variant: "default",
     },
     {
-      label: "Careers",
-      href: "/careers",
-      description: "Join our team - View open positions",
-      category: "main",
-      showInHeader: true,
-      showInCommandMenu: true,
-      keywords: ["careers", "jobs", "positions", "hiring", "apply"],
-      icon: "💼",
-      umamiEvent: "Nav - Careers",
-      variant: "default",
-    },
-    {
       label: "Industry",
       href: "/industry",
       description: "Collaborate with us!",

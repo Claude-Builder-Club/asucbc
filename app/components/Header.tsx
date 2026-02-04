@@ -284,16 +284,6 @@ export default function Header() {
                 </motion.div>
                 <motion.div variants={mobileItemVariants}>
                   <Link
-                    href="/careers"
-                    className={`flex px-3 py-4 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10 transition-all duration-200 font-medium font-sans rounded-lg min-h-[48px] items-center touch-manipulation`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-umami-event="Mobile Nav - Careers"
-                  >
-                    Careers
-                  </Link>
-                </motion.div>
-                <motion.div variants={mobileItemVariants}>
-                  <Link
                     href="/industry"
                     className={`flex px-3 py-4 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10 transition-all duration-200 font-medium font-sans rounded-lg min-h-[48px] items-center touch-manipulation`}
                     onClick={() => setIsMobileMenuOpen(false)}

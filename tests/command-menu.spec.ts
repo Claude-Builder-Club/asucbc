@@ -78,7 +78,6 @@ test.describe('Command Menu', () => {
     await expect(page.getByRole('option', { name: /^Home/i })).toBeVisible();
     await expect(page.getByRole('option', { name: /^About/i })).toBeVisible();
     await expect(page.getByRole('option', { name: /^Team/i, exact: false }).first()).toBeVisible();
-    await expect(page.getByRole('option', { name: /^Careers/i })).toBeVisible();
   });
 
   test('should display hidden developer pages', async ({ page }) => {
