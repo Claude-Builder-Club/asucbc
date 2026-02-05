@@ -83,7 +83,10 @@ export default function Home() {
             variants={leftColumnVariants}
             className="flex flex-col justify-start items-center lg:items-start gap-6 text-center lg:text-left w-full max-w-2xl"
           >
-            <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4 lg:space-y-3 w-full lg:mb-13">
+            <motion.div
+              variants={itemVariants}
+              className="space-y-3 sm:space-y-4 lg:space-y-3 w-full lg:mb-13"
+            >
               <Heading
                 level="h1"
                 animate={false}
@@ -95,7 +98,19 @@ export default function Home() {
                 level="h3"
                 className="leading-relaxed text-balance lg:text-2xl xl:text-2xl"
               >
-                Where curiosity meets <span className="text-[var(--theme-text-accent)] font-bold underline">cutting-edge AI</span>. Build <span className="text-[var(--theme-text-accent)] font-bold underline">anything</span>. Create the <span className="text-[var(--theme-text-accent)] font-bold underline italic">impossible</span>.
+                Where curiosity meets{" "}
+                <span className="text-[var(--theme-text-accent)] font-bold underline">
+                  cutting-edge AI
+                </span>
+                . Build{" "}
+                <span className="text-[var(--theme-text-accent)] font-bold underline">
+                  anything
+                </span>
+                . Create the{" "}
+                <span className="text-[var(--theme-text-accent)] font-bold underline italic">
+                  impossible
+                </span>
+                .
               </Heading>
             </motion.div>
 
@@ -103,7 +118,7 @@ export default function Home() {
             <motion.div variants={itemVariants} className="w-full">
               <JoinCard
                 discordHref="https://discord.gg/PRh8F2XebB"
-                benefitsHref="https://docs.google.com/forms/d/e/1FAIpQLScP9LuFwiHEx806tv9zczjCIEzqO1Zjb-FjB4XWoa6BS1NNKQ/viewform"
+                benefitsHref="/auth"
               />
             </motion.div>
 

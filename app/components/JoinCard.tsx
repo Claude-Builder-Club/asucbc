@@ -70,7 +70,8 @@ export default function JoinCard({
             var(--theme-card-gradient-end, var(--theme-card-bg)) 100%
           )
         `,
-        boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.05), 4px 4px 12px rgba(0, 0, 0, 0.08)",
+        boxShadow:
+          "2px 2px 4px rgba(0, 0, 0, 0.05), 4px 4px 12px rgba(0, 0, 0, 0.08)",
       }}
     >
       {/* Subtle animated gradient overlay */}
@@ -125,7 +126,7 @@ export default function JoinCard({
           className="list-disc pl-4 text-sm sm:text-base text-[var(--theme-text-primary)]/80 space-y-1 mb-4"
         >
           <motion.li variants={listItemVariants}>
-            Free Claude Pro + $50 in API credits
+            Six free months of Claude Pro and $25 in API credits
           </motion.li>
           <motion.li variants={listItemVariants}>
             Hands-on workshops and resources
@@ -152,7 +153,12 @@ export default function JoinCard({
             data-umami-event="Join Discord"
             data-umami-event-location="JoinCard"
           >
-            <Button variant="primary" size="md" fullWidth className="whitespace-nowrap">
+            <Button
+              variant="primary"
+              size="md"
+              fullWidth
+              className="whitespace-nowrap"
+            >
               Join our Discord
             </Button>
           </Link>
