@@ -34,11 +34,11 @@ export default function Header() {
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    const animated = sessionStorage.getItem('headerAnimated');
+    const animated = sessionStorage.getItem("headerAnimated");
     if (animated) {
       setHasAnimated(true);
     } else {
-      sessionStorage.setItem('headerAnimated', 'true');
+      sessionStorage.setItem("headerAnimated", "true");
     }
   }, []);
 
@@ -47,12 +47,14 @@ export default function Header() {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: hasAnimated ? { duration: 0 } : {
-        delay: i * 0.1,
-        type: "spring" as const,
-        stiffness: 100,
-        damping: 12,
-      },
+      transition: hasAnimated
+        ? { duration: 0 }
+        : {
+            delay: i * 0.1,
+            type: "spring" as const,
+            stiffness: 100,
+            damping: 12,
+          },
     }),
   };
 
@@ -98,7 +100,11 @@ export default function Header() {
           <motion.div
             initial={{ opacity: hasAnimated ? 1 : 0, x: hasAnimated ? 0 : -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={hasAnimated ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15 }}
+            transition={
+              hasAnimated
+                ? { duration: 0 }
+                : { type: "spring", stiffness: 100, damping: 15 }
+            }
           >
             <Link
               href="/"
@@ -123,13 +129,13 @@ export default function Header() {
               const isPrimary = item.variant === "primary";
               const isSecondary = item.variant === "secondary";
 
-              const baseClasses = `relative z-10 transition-all duration-200 font-medium font-sans px-${isDefault ? '4' : '6'} py-3 rounded-${isDefault ? 'md' : 'lg'} min-h-[48px] flex items-center touch-manipulation`;
-              
+              const baseClasses = `relative z-10 transition-all duration-200 font-medium font-sans px-${isDefault ? "4" : "6"} py-3 rounded-${isDefault ? "md" : "lg"} min-h-[48px] flex items-center touch-manipulation`;
+
               const variantClasses = isDefault
                 ? "text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-white/10"
                 : isPrimary
-                ? "bg-[var(--theme-button-bg)] text-white hover:bg-[var(--theme-button-hover-bg)] hover:shadow-lg"
-                : "bg-[var(--theme-button-alternate-bg)] text-[var(--theme-button-alternate-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] hover:shadow-lg border border-transparent hover:border-[var(--theme-button-hover-border)]";
+                  ? "bg-[var(--theme-button-bg)] text-white hover:bg-[var(--theme-button-hover-bg)] hover:shadow-lg"
+                  : "bg-[var(--theme-button-alternate-bg)] text-[var(--theme-button-alternate-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] hover:shadow-lg border border-transparent hover:border-[var(--theme-button-hover-border)]";
 
               return (
                 <motion.div
@@ -148,7 +154,7 @@ export default function Header() {
                       href={item.href}
                       target={item.isExternal ? "_blank" : undefined}
                       rel={item.isExternal ? "noopener noreferrer" : undefined}
-                      className={`${baseClasses} ${variantClasses} ${isPrimary ? 'z-20' : ''} ${isSecondary ? 'overflow-visible' : ''}`}
+                      className={`${baseClasses} ${variantClasses} ${isPrimary ? "z-20" : ""} ${isSecondary ? "overflow-visible" : ""}`}
                       data-umami-event={item.umamiEvent}
                     >
                       {item.label}
@@ -316,9 +322,7 @@ export default function Header() {
                 )}
                 <motion.div variants={mobileItemVariants}>
                   <Link
-                    href="https://docs.google.com/forms/d/e/1FAIpQLScP9LuFwiHEx806tv9zczjCIEzqO1Zjb-FjB4XWoa6BS1NNKQ/viewform"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/auth"
                     className={`relative z-20 flex px-3 py-4 bg-[var(--theme-button-bg)] text-[var(--theme-button-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] transition-all duration-300 ease-in-out font-medium text-base font-sans border border-[var(--theme-button-border)] hover:border-[var(--theme-button-hover-border)] rounded-lg min-h-[48px] items-center touch-manipulation`}
                     onClick={() => setIsMobileMenuOpen(false)}
                     data-umami-event="Mobile Nav - Join Us"
@@ -333,7 +337,10 @@ export default function Header() {
       </div>
 
       {/* Command Menu */}
-      <CommandMenu open={isCommandMenuOpen} onOpenChange={setIsCommandMenuOpen} />
+      <CommandMenu
+        open={isCommandMenuOpen}
+        onOpenChange={setIsCommandMenuOpen}
+      />
     </header>
   );
 }

@@ -87,7 +87,7 @@ export const getNavigationItems = (): NavigationItem[] => {
       umamiEvent: "Nav - Contact",
       variant: "default",
     },
-    
+
     // Conditional pages
     {
       label: "Hackathon",
@@ -116,19 +116,39 @@ export const getNavigationItems = (): NavigationItem[] => {
       icon: "🛠️",
       umamiEvent: "Nav - Devs",
     },
-    // External links
+    // Auth link
     {
       label: "Join Us",
-      href: "https://docs.google.com/forms/d/e/1FAIpQLScP9LuFwiHEx806tv9zczjCIEzqO1Zjb-FjB4XWoa6BS1NNKQ/viewform",
-      description: "Fill out our membership form",
-      category: "external",
+      href: "/auth",
+      description: "Sign in to your account",
+      category: "main",
       showInHeader: true,
-      showInCommandMenu: true,
-      isExternal: true,
-      keywords: ["join", "signup", "register", "membership", "form"],
+      showInCommandMenu: false,
+      isExternal: false,
+      keywords: ["join", "signup", "register", "membership"],
       icon: "✨",
       umamiEvent: "Header - Join Us",
       variant: "primary",
+    },
+    // Login command menu item
+    {
+      label: "Login",
+      href: "/auth",
+      description: "Sign in to your account",
+      category: "main",
+      showInHeader: false,
+      showInCommandMenu: true,
+      isExternal: false,
+      keywords: [
+        "login",
+        "signin",
+        "sign in",
+        "log in",
+        "authenticate",
+        "account",
+      ],
+      icon: "🔐",
+      umamiEvent: "Command Menu - Login",
     },
   ];
 
@@ -166,10 +186,10 @@ export const getCommandMenuItems = (): NavigationItem[] => {
  */
 export const getGroupedCommandMenuItems = () => {
   const items = getCommandMenuItems();
-  
+
   return {
-    main: items.filter(item => item.category === "main"),
-    hidden: items.filter(item => item.category === "hidden"),
-    external: items.filter(item => item.category === "external"),
+    main: items.filter((item) => item.category === "main"),
+    hidden: items.filter((item) => item.category === "hidden"),
+    external: items.filter((item) => item.category === "external"),
   };
 };
