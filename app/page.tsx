@@ -118,7 +118,7 @@ export default function Home() {
             <motion.div variants={itemVariants} className="w-full">
               <JoinCard
                 discordHref="https://discord.gg/PRh8F2XebB"
-                benefitsHref="/auth"
+                benefitsHref="/login"
               />
             </motion.div>
 
