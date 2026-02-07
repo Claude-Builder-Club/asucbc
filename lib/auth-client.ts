@@ -6,7 +6,7 @@ export const authClient = createAuthClient();
 export const signInWithGoogle = async () => {
   return authClient.signIn.social({
     provider: "google",
-    callbackURL: "/login",
+    callbackURL: "/dashboard",
     errorCallbackURL: "/login",
   });
 };
