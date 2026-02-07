@@ -1,22 +1,27 @@
 "use client";
 
-import { signOut } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
+import { useSession } from "@/lib/auth-client";
+import { Heading, Skeleton } from "@/app/components/ui";
 
 export default function DashboardPage() {
-  const router = useRouter();
+  const { data: session, isPending } = useSession();
+
+  const name = session?.user?.name?.trim() ?? "";
+  const parts = name.split(/\s+/);
+  const firstName = parts[0] || "Member";
+  const lastName = parts.slice(1).join(" ");
 
   return (
     <div>
-      Dashboard
-      <button
-        onClick={async () => {
-          await signOut();
-          router.push("/");
-        }}
-      >
-        Sign Out
-      </button>
+      <Heading level="h3" gradient>
+        {isPending ? (
+          <Skeleton variant="text" width="60%" height="2.25rem" />
+        ) : (
+          <>
+            Welcome {firstName} {lastName} to the Claude Builder Club!
+          </>
+        )}
+      </Heading>
     </div>
   );
 }
