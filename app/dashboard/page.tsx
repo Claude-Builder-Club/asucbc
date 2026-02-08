@@ -9,7 +9,6 @@ export default function DashboardPage() {
   const name = session?.user?.name?.trim() ?? "";
   const parts = name.split(/\s+/);
   const firstName = parts[0] || "Member";
-  const lastName = parts.slice(1).join(" ");
 
   return (
     <div>
@@ -17,9 +16,7 @@ export default function DashboardPage() {
         {isPending ? (
           <Skeleton variant="text" width="60%" height="2.25rem" />
         ) : (
-          <>
-            Welcome {firstName} {lastName} to the Claude Builder Club!
-          </>
+          <>Welcome {firstName} to the Claude Builder Club!</>
         )}
       </Heading>
     </div>
