@@ -3,20 +3,13 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import { signInWithGoogle, signOut, useSession } from "@/lib/auth-client";
-import {
-  Badge,
-  Button,
-  Card,
-  Heading,
-  Text,
-} from "@/app/components/ui";
+import { signInWithGoogle } from "@/lib/auth-client";
+import { Badge, Button, Card, Heading } from "@/app/components/ui";
 
 const DOMAIN_ERROR = "INVALID_DOMAIN";
 const DEFAULT_ERROR_MESSAGE = "Something went wrong. Please try again.";
 
 export default function LoginPage() {
-  const { data: session, isPending } = useSession();
   const [errorCode, setErrorCode] = useState<string | null>(null);
   const [domainErrorActive, setDomainErrorActive] = useState(false);
 
@@ -33,14 +26,6 @@ export default function LoginPage() {
     }
   }, []);
 
-  if (isPending) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Text variant="secondary">Loading...</Text>
-      </div>
-    );
-  }
-
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
       <Tilt
@@ -54,28 +39,10 @@ export default function LoginPage() {
       >
         <Card gradient className="w-full">
           <div className="flex flex-col items-center gap-6">
-          <Heading level="h4" animate={false}>
-            ASU Claude Builder Club
-          </Heading>
+            <Heading level="h4" animate={false}>
+              ASU Claude Builder Club
+            </Heading>
 
-          {session ? (
-            <div className="flex w-full flex-col items-center gap-4">
-              <Badge variant="success">Signed in</Badge>
-              <Text size="sm" variant="primary">
-                {session.user.name}
-              </Text>
-              <Text size="xs" variant="secondary">
-                {session.user.email}
-              </Text>
-              <Button
-                variant="secondary"
-                fullWidth
-                onClick={() => signOut()}
-              >
-                Sign Out
-              </Button>
-            </div>
-          ) : (
             <div className="flex w-full flex-col items-center gap-4">
               {errorCode && errorCode !== DOMAIN_ERROR && (
                 <Badge variant="error" size="lg" className="text-center">
@@ -83,10 +50,7 @@ export default function LoginPage() {
                 </Badge>
               )}
 
-              <Button
-                variant="primary"
-                onClick={() => signInWithGoogle()}
-              >
+              <Button variant="primary" onClick={() => signInWithGoogle()}>
                 Sign in with Google
               </Button>
 
@@ -104,7 +68,6 @@ export default function LoginPage() {
                 Only @asu.edu emails are allowed
               </motion.p>
             </div>
-          )}
           </div>
         </Card>
       </Tilt>

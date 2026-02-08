@@ -322,7 +322,7 @@ export default function Header() {
                 )}
                 <motion.div variants={mobileItemVariants}>
                   <Link
-                    href="/auth"
+                    href="/login"
                     className={`relative z-20 flex px-3 py-4 bg-[var(--theme-button-bg)] text-[var(--theme-button-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] transition-all duration-300 ease-in-out font-medium text-base font-sans border border-[var(--theme-button-border)] hover:border-[var(--theme-button-hover-border)] rounded-lg min-h-[48px] items-center touch-manipulation`}
                     onClick={() => setIsMobileMenuOpen(false)}
                     data-umami-event="Mobile Nav - Join Us"

@@ -119,7 +119,7 @@ export const getNavigationItems = (): NavigationItem[] => {
     // Auth link
     {
       label: "Join Us",
-      href: "/auth",
+      href: "/login",
       description: "Sign in to your account",
       category: "main",
       showInHeader: true,
@@ -133,7 +133,7 @@ export const getNavigationItems = (): NavigationItem[] => {
     // Login command menu item
     {
       label: "Login",
-      href: "/auth",
+      href: "/login",
       description: "Sign in to your account",
       category: "main",
       showInHeader: false,
