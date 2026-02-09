@@ -15,7 +15,6 @@
     "@fullcalendar/google-calendar": "^6.1.19",
     "@fullcalendar/interaction": "^6.1.19",
     "@fullcalendar/react": "^6.1.19",
-    "@neondatabase/serverless": "^1.0.2",
     "@next/bundle-analyzer": "^16.1.6",
     "@radix-ui/react-slot": "^1.2.4",
     "@types/canvas-confetti": "^1.9.0",
