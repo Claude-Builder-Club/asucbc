@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Heading, Text, Button } from "./ui";
+import { Heading, Text, Button, TiltCard } from "./ui";
 
 type JoinCardProps = {
   title?: string;
@@ -58,59 +58,22 @@ export default function JoinCard({
   className = "",
 }: JoinCardProps) {
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className={`w-full rounded-xl relative overflow-hidden border-2 border-[var(--theme-card-border)] p-4 sm:p-5 lg:p-6 ${className}`}
-      style={{
-        background: `
-          linear-gradient(135deg,
-            var(--theme-card-bg) 0%,
-            var(--theme-card-gradient-end, var(--theme-card-bg)) 100%
-          )
-        `,
-        boxShadow:
-          "2px 2px 4px rgba(0, 0, 0, 0.05), 4px 4px 12px rgba(0, 0, 0, 0.08)",
-      }}
+    <TiltCard
+      gradient
+      animated={false}
+      tiltMaxAngleX={5}
+      tiltMaxAngleY={5}
+      scale={1.01}
+      glareMaxOpacity={0.1}
+      className={`w-full ${className}`}
+      childrenAreRelative={false}
     >
-      {/* Subtle animated gradient overlay */}
       <motion.div
-        className="absolute inset-0 opacity-20 pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(circle at 20% 50%,
-              var(--theme-gradient-accent, transparent) 0%,
-              transparent 50%
-            )
-          `,
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.15, 0.25, 0.15],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut" as const,
-        }}
-      />
-
-      {/* Subtle highlight on lit edge */}
-      <div
-        className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-xl"
-        style={{
-          background: `
-            linear-gradient(135deg,
-              rgba(255, 255, 255, 0.08) 0%,
-              transparent 40%
-            )
-          `,
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10">
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10"
+      >
         <motion.div variants={itemVariants}>
           <Heading level="h4" animate={false} className="mb-3">
             {title}
@@ -175,7 +138,7 @@ export default function JoinCard({
             </Button>
           </Link>
         </motion.div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </TiltCard>
   );
 }

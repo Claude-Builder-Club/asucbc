@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Heading, Text, Card, Container } from "../components/ui";
+import { Heading, Text, TiltCard, Container } from "../components/ui";
 
 const currentSponsor = {
   name: "Anthropic",
@@ -94,14 +93,18 @@ export default function IndustryPage() {
               variants={fadeUp}
               className="space-y-6"
             >
-              <Heading level="h1" animate={false} className="text-4xl sm:text-5xl">
+              <Heading
+                level="h1"
+                animate={false}
+                className="text-4xl sm:text-5xl"
+              >
                 Build With ASU's AI Native Team
               </Heading>
               <Text size="lg" variant="secondary" className="max-w-2xl">
                 We collaborate with ambitious companies to prototype and ship
-                industry-grade AI products. Tap into a multidisciplinary roster of
-                engineers, designers, and operators who work alongside your team
-                from pitch to launch.
+                industry-grade AI products. Tap into a multidisciplinary roster
+                of engineers, designers, and operators who work alongside your
+                team from pitch to launch.
               </Text>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -117,49 +120,59 @@ export default function IndustryPage() {
               className="relative"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.2 }}
+              transition={{
+                type: "spring",
+                stiffness: 80,
+                damping: 20,
+                delay: 0.2,
+              }}
             >
-              <Tilt
-                glareEnable
-                glareMaxOpacity={0.15}
-                scale={1.02}
-                tiltMaxAngleX={8}
-                tiltMaxAngleY={8}
-                transitionSpeed={600}
-                className="h-full"
+              <Link
+                href={currentSponsor.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+                aria-label={`Visit ${currentSponsor.name}`}
               >
-                <Link
-                  href={currentSponsor.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block h-full"
-                  aria-label={`Visit ${currentSponsor.name}`}
+                <TiltCard
+                  gradient
+                  hoverable
+                  tiltMaxAngleX={8}
+                  tiltMaxAngleY={8}
+                  transitionSpeed={600}
+                  tiltClassName="h-full"
+                  className="h-full"
                 >
-                  <Card gradient hoverable className="h-full">
-                    <div className="space-y-6">
-                      <div className="relative h-16 w-44 sm:h-20 sm:w-56">
-                        <Image
-                          src={currentSponsor.logo}
-                          alt={`${currentSponsor.name} logo`}
-                          fill
-                          sizes="(max-width: 640px) 200px, 224px"
-                          className="object-contain drop-shadow-[0_4px_30px_rgba(0,0,0,0.4)] dark:invert dark:hue-rotate-180"
-                          priority
-                        />
-                      </div>
-                      <Text variant="secondary" className="text-sm leading-relaxed">
-                        {currentSponsor.description}
-                      </Text>
+                  <div className="space-y-6">
+                    <div className="relative h-16 w-44 sm:h-20 sm:w-56">
+                      <Image
+                        src={currentSponsor.logo}
+                        alt={`${currentSponsor.name} logo`}
+                        fill
+                        sizes="(max-width: 640px) 200px, 224px"
+                        className="object-contain drop-shadow-[0_4px_30px_rgba(0,0,0,0.4)] dark:invert dark:hue-rotate-180"
+                        priority
+                      />
                     </div>
-                  </Card>
-                </Link>
-              </Tilt>
+                    <Text
+                      variant="secondary"
+                      className="text-sm leading-relaxed"
+                    >
+                      {currentSponsor.description}
+                    </Text>
+                  </div>
+                </TiltCard>
+              </Link>
             </motion.div>
           </section>
 
           <section id="partnership" className="space-y-8">
             <div>
-              <Text size="sm" variant="secondary" className="uppercase tracking-[0.35em]">
+              <Text
+                size="sm"
+                variant="secondary"
+                className="uppercase tracking-[0.35em]"
+              >
                 Partnership Info
               </Text>
               <Heading level="h2" animate={false} className="mt-2 text-3xl">
@@ -176,28 +189,32 @@ export default function IndustryPage() {
                   viewport={{ once: true, amount: 0.3 }}
                   variants={fadeUp}
                 >
-                  <Tilt
-                    glareEnable
+                  <TiltCard
                     glareMaxOpacity={0.1}
                     tiltMaxAngleX={6}
                     tiltMaxAngleY={6}
                     scale={1.01}
                     transitionSpeed={600}
+                    hoverable
+                    gradient
+                    tiltClassName="h-full"
                     className="h-full"
                   >
-                    <Card hoverable gradient className="h-full">
-                      <Heading
-                        level="h6"
-                        animate={false}
-                        className="!text-lg sm:!text-xl mb-3 font-semibold"
-                      >
-                        {item.question}
-                      </Heading>
-                      <Text variant="secondary" size="sm" className="!text-sm leading-6">
-                        {item.answer}
-                      </Text>
-                    </Card>
-                  </Tilt>
+                    <Heading
+                      level="h6"
+                      animate={false}
+                      className="!text-lg sm:!text-xl mb-3 font-semibold"
+                    >
+                      {item.question}
+                    </Heading>
+                    <Text
+                      variant="secondary"
+                      size="sm"
+                      className="!text-sm leading-6"
+                    >
+                      {item.answer}
+                    </Text>
+                  </TiltCard>
                 </motion.div>
               ))}
             </div>
@@ -217,40 +234,34 @@ export default function IndustryPage() {
                   viewport={{ once: true, amount: 0.3 }}
                   variants={fadeUp}
                 >
-                  <Tilt
-                    glareEnable
-                    glareMaxOpacity={0.12}
-                    tiltMaxAngleX={8}
-                    tiltMaxAngleY={8}
-                    scale={1.02}
-                    transitionSpeed={500}
-                    className="h-full"
+                  <Link
+                    href={sponsor.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-full"
+                    aria-label={`Visit ${sponsor.name}`}
                   >
-                    <Link
-                      href={sponsor.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block h-full"
-                      aria-label={`Visit ${sponsor.name}`}
+                    <TiltCard
+                      glareMaxOpacity={0.12}
+                      tiltMaxAngleX={8}
+                      tiltMaxAngleY={8}
+                      animated={false}
+                      hoverable
+                      tiltClassName="h-full"
+                      className="flex items-center justify-center py-6"
+                      childrenAreRelative
                     >
-                      <Card
-                        animated={false}
-                        hoverable
-                        className="flex items-center justify-center py-6"
-                        childrenAreRelative
-                      >
-                        <div className="relative h-10 w-24 sm:h-12 sm:w-28">
-                          <Image
-                            src={sponsor.logo}
-                            alt={`${sponsor.name} logo`}
-                            fill
-                            sizes="112px"
-                            className="object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] dark:invert dark:hue-rotate-180"
-                          />
-                        </div>
-                      </Card>
-                    </Link>
-                  </Tilt>
+                      <div className="relative h-10 w-24 sm:h-12 sm:w-28">
+                        <Image
+                          src={sponsor.logo}
+                          alt={`${sponsor.name} logo`}
+                          fill
+                          sizes="112px"
+                          className="object-contain drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] dark:invert dark:hue-rotate-180"
+                        />
+                      </div>
+                    </TiltCard>
+                  </Link>
                 </motion.div>
               ))}
             </div>

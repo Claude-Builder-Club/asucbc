@@ -19,6 +19,9 @@ export type { TextareaProps } from "./Textarea";
 export { default as Card } from "./Card";
 export type { CardProps } from "./Card";
 
+export { default as TiltCard } from "./TiltCard";
+export type { TiltCardProps } from "./TiltCard";
+
 export { default as Container } from "./Container";
 export type { ContainerProps } from "./Container";
 

@@ -15,10 +15,16 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://claudebuilder.club"),
   title: "ASU Claude Builder Club",
   description: "ASU Claude Builder Club - Building with Claude AI",
-  icons: {
-    icon: "/claude.svg",
+  openGraph: {
+    type: "website",
+    siteName: "ASU Claude Builder Club",
+    url: "https://claudebuilder.club",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -29,28 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <title>ASU Claude Builder Club</title>
-        <meta
-          name="description"
-          content="ASU Claude Builder Club - Building with Claude AI"
-        />
-        <link rel="icon" href="/claude.svg" />
-        <meta property="og:title" content="ASU Claude Builder Club" />
-        <meta
-          property="og:description"
-          content="ASU Claude Builder Club - Building with Claude AI"
-        />
-        <meta property="og:image" content="/assets/og/splash.png" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="ASU Claude Builder Club" />
-        <meta
-          name="twitter:description"
-          content="ASU Claude Builder Club - Building with Claude AI"
-        />
-        <meta name="twitter:image" content="/assets/og/splash.png" />
-      </head>
+      <head></head>
       <body
         suppressHydrationWarning
         className={`${poppins.variable} antialiased absolute top-0 left-0 w-full h-[100dvh] overflow-auto`}

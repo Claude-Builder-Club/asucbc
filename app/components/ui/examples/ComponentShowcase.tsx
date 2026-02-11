@@ -14,6 +14,7 @@ import {
   Link,
   Divider,
   Skeleton,
+  TiltCard,
 } from "@/app/components/ui";
 
 export default function ComponentShowcase() {
@@ -56,7 +57,8 @@ export default function ComponentShowcase() {
             <Heading level="h2">Heading 2</Heading>
             <Heading level="h3">Heading 3</Heading>
             <Text size="lg" variant="primary">
-              Large primary text - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Large primary text - Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit.
             </Text>
             <Text size="base" variant="secondary">
               Base secondary text - Sed do eiusmod tempor incididunt ut labore.
@@ -77,12 +79,7 @@ export default function ComponentShowcase() {
               <Label htmlFor="name" required>
                 Full Name
               </Label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="John Doe"
-                fullWidth
-              />
+              <Input id="name" type="text" placeholder="John Doe" fullWidth />
             </div>
             <div>
               <Label htmlFor="email">Email Address</Label>
@@ -122,7 +119,11 @@ export default function ComponentShowcase() {
             <div className="flex flex-wrap gap-2">
               <Tag variant="primary">React</Tag>
               <Tag variant="secondary">TypeScript</Tag>
-              <Tag variant="outline" removable onRemove={() => alert('Tag removed')}>
+              <Tag
+                variant="outline"
+                removable
+                onRemove={() => alert("Tag removed")}
+              >
                 Removable
               </Tag>
             </div>
@@ -187,6 +188,60 @@ export default function ComponentShowcase() {
             <Skeleton variant="rectangular" height={200} />
           </div>
         </Card>
+
+        {/* Parallax Tilt Cards Section */}
+        <Heading level="h2" className="mb-6">
+          Parallax Tilt Cards
+        </Heading>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <TiltCard gradient className="h-full">
+            <Heading level="h4" className="mb-2">
+              Default Tilt
+            </Heading>
+            <Text size="sm" variant="secondary">
+              Hover and move your cursor to see the parallax tilt effect with a
+              subtle glare.
+            </Text>
+          </TiltCard>
+          <TiltCard
+            gradient
+            className="h-full"
+            glareMaxOpacity={0.3}
+            tiltMaxAngleX={15}
+            tiltMaxAngleY={15}
+            scale={1.05}
+            transitionSpeed={300}
+          >
+            <Badge variant="accent" className="mb-3">
+              Intense
+            </Badge>
+            <Heading level="h4" className="mb-2">
+              Strong Tilt
+            </Heading>
+            <Text size="sm" variant="secondary">
+              Higher tilt angle, more glare, and a bigger scale effect.
+            </Text>
+          </TiltCard>
+          <TiltCard
+            gradient
+            className="h-full"
+            glareMaxOpacity={0.1}
+            tiltMaxAngleX={5}
+            tiltMaxAngleY={5}
+            scale={1.01}
+            transitionSpeed={800}
+          >
+            <Heading level="h4" className="mb-2">
+              Subtle Tilt
+            </Heading>
+            <Text size="sm" variant="secondary" className="mb-4">
+              A gentle, slower effect for a more refined feel.
+            </Text>
+            <Button variant="primary" fullWidth>
+              Click Me
+            </Button>
+          </TiltCard>
+        </div>
 
         {/* Interactive Cards Section */}
         <Heading level="h2" className="mb-6">
