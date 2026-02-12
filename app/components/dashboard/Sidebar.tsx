@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { signOut } from "@/lib/auth-client";
+import { useEffect, useState, useCallback } from "react";
+import { signOut, useSession } from "@/lib/auth-client";
 import { Button, Divider } from "@/app/components/ui";
 import {
   LayoutDashboard,
@@ -25,6 +26,29 @@ const navItems = [
 
 export default function Sidebar() {
   const router = useRouter();
+  const { data: session } = useSession();
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  const userId = session?.user?.id;
+
+  //Memoizing Inbox Unread Messages Function
+  const fetchUnreadCount = useCallback(async () => {
+    if (!userId) return;
+    try {
+      const res = await fetch(`/api/inbox/unread-count?userId=${userId}`);
+      if (res.ok) {
+        const data = await res.json();
+        setUnreadCount(data.count);
+      }
+    } catch {}
+  }, [userId]);
+
+  useEffect(() => {
+    if (!userId) return;
+    fetchUnreadCount();
+    const interval = setInterval(fetchUnreadCount, 60000);
+    return () => clearInterval(interval);
+  }, [userId, fetchUnreadCount]);
 
   return (
     <aside
@@ -55,7 +79,18 @@ export default function Sidebar() {
             className="justify-start gap-2 px-3 py-2.5 text-sm font-medium"
             onClick={() => router.push(item.href)}
           >
-            <item.icon size={16} />
+            {item.label === "Inbox" ? (
+              <span className="relative">
+                <item.icon size={16} />
+                {unreadCount > 0 && (
+                  <span className="absolute -right-2 -top-1.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
+                    {unreadCount > 99 ? "99+" : unreadCount}
+                  </span>
+                )}
+              </span>
+            ) : (
+              <item.icon size={16} />
+            )}
             {item.label}
           </Button>
         ))}
