@@ -139,7 +139,7 @@ export default function InboxPage() {
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3 min-w-0">
                       {!message.is_read && (
-                        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--theme-text-accent)]" />
+                        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[--theme-text-accent]" />
                       )}
                       <Text
                         size="base"
@@ -168,7 +168,7 @@ export default function InboxPage() {
                         }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-4 border-t border-[var(--theme-card-border)] pt-4">
+                        <div className="mt-4 border-t border-[--theme-card-border] pt-4">
                           {message.sender_name && (
                             <Text
                               size="sm"
