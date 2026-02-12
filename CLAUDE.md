@@ -7,6 +7,10 @@
 - Reference the UI component examples at app/devs/ when building any UI components
 - And update app/devs when any new composable UI components are built
 
+# Database
+
+ - Send the user queries, do not attempt to perform the query yourself
+
 ## Database Schema
 
 Run this query to understand the database structure:
