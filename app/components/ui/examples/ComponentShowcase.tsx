@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Button,
   Heading,
@@ -15,11 +16,14 @@ import {
   Divider,
   Skeleton,
   TiltCard,
+  FlipCard,
 } from "@/app/components/ui";
 
 export default function ComponentShowcase() {
+  const [activeFlipCard, setActiveFlipCard] = useState<string | null>(null);
+
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-12" onClick={() => setActiveFlipCard(null)}>
       <Container size="lg">
         <Heading level="h1" className="mb-8 text-center">
           UI Component Library Showcase
@@ -278,6 +282,113 @@ export default function ComponentShowcase() {
               Get Started
             </Button>
           </Card>
+        </div>
+
+        {/* Flip Cards Section */}
+        <Heading level="h2" className="mb-2">
+          Flip Cards
+        </Heading>
+        <Text size="base" variant="secondary" className="mb-6">
+          Click a card to flip it and reveal back content. Only one card can be
+          active at a time. Click outside or on the back to close.
+        </Text>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12 mb-8">
+          <FlipCard
+            id="flip-1"
+            activeId={activeFlipCard}
+            setActiveId={setActiveFlipCard}
+            front={
+              <div className="aspect-square rounded-lg bg-[var(--theme-card-bg)] border border-[var(--theme-card-border)] flex flex-col items-center justify-center p-6 cursor-pointer">
+                <Heading level="h4" animate={false} className="mb-2">
+                  Card One
+                </Heading>
+                <Text size="sm" variant="secondary">
+                  Click to flip
+                </Text>
+              </div>
+            }
+            back={
+              <div className="absolute top-0 left-0 w-full h-full p-6 flex flex-col text-start">
+                <Heading level="h4" animate={false} className="mb-4">
+                  Back Side
+                </Heading>
+                <Text
+                  size="base"
+                  variant="secondary"
+                  className="leading-relaxed"
+                >
+                  This is the back content of the first card. Click anywhere to
+                  close.
+                </Text>
+              </div>
+            }
+          />
+          <FlipCard
+            id="flip-2"
+            activeId={activeFlipCard}
+            setActiveId={setActiveFlipCard}
+            front={
+              <div className="aspect-square rounded-lg bg-[var(--theme-card-bg)] border border-[var(--theme-card-border)] flex flex-col items-center justify-center p-6 cursor-pointer">
+                <Badge variant="accent" className="mb-3">
+                  Featured
+                </Badge>
+                <Heading level="h4" animate={false} className="mb-2">
+                  Card Two
+                </Heading>
+                <Text size="sm" variant="secondary">
+                  Click to flip
+                </Text>
+              </div>
+            }
+            back={
+              <div className="absolute top-0 left-0 w-full h-full p-6 flex flex-col text-start">
+                <Heading level="h4" animate={false} className="mb-4">
+                  Details
+                </Heading>
+                <Text
+                  size="base"
+                  variant="secondary"
+                  className="leading-relaxed"
+                >
+                  The second card's back content. Opening this card
+                  automatically closes the first.
+                </Text>
+              </div>
+            }
+          />
+          <FlipCard
+            id="flip-3"
+            activeId={activeFlipCard}
+            setActiveId={setActiveFlipCard}
+            tiltMaxAngle={15}
+            activeTiltMaxAngle={3}
+            glareMaxOpacity={0.3}
+            front={
+              <div className="aspect-square rounded-lg bg-[var(--theme-card-bg)] border border-[var(--theme-card-border)] flex flex-col items-center justify-center p-6 cursor-pointer">
+                <Heading level="h4" animate={false} className="mb-2">
+                  Custom Tilt
+                </Heading>
+                <Text size="sm" variant="secondary">
+                  Stronger tilt + glare
+                </Text>
+              </div>
+            }
+            back={
+              <div className="absolute top-0 left-0 w-full h-full p-6 flex flex-col text-start">
+                <Heading level="h4" animate={false} className="mb-4">
+                  Custom Props
+                </Heading>
+                <Text
+                  size="base"
+                  variant="secondary"
+                  className="leading-relaxed"
+                >
+                  This card uses custom tiltMaxAngle, activeTiltMaxAngle, and
+                  glareMaxOpacity props.
+                </Text>
+              </div>
+            }
+          />
         </div>
       </Container>
     </div>

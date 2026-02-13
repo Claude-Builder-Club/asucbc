@@ -39,6 +39,10 @@ export type { TagProps } from "./Tag";
 export { default as Link } from "./Link";
 export type { LinkProps } from "./Link";
 
+// Flip Card Component
+export { default as FlipCard } from "./FlipCard";
+export type { FlipCardProps } from "./FlipCard";
+
 // Loading Components
 export { default as Skeleton } from "./Skeleton";
 export type { SkeletonProps } from "./Skeleton";
