@@ -47,7 +47,12 @@ export default function Sidebar() {
     if (!userId) return;
     fetchUnreadCount();
     const interval = setInterval(fetchUnreadCount, 60000);
-    return () => clearInterval(interval);
+    const handleRead = () => fetchUnreadCount();
+    window.addEventListener("inbox:read", handleRead);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("inbox:read", handleRead);
+    };
   }, [userId, fetchUnreadCount]);
 
   return (
