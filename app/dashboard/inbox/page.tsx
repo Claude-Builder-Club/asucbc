@@ -46,7 +46,7 @@ export default function InboxPage() {
   const fetchMessages = useCallback(async () => {
     if (!userId) return;
     try {
-      const res = await fetch(`/api/inbox?userId=${userId}`);
+      const res = await fetch("/api/inbox");
       if (res.ok) {
         const data = await res.json();
         setMessages(data);
@@ -74,7 +74,7 @@ export default function InboxPage() {
         await fetch("/api/inbox", {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId, messageId: message.id }),
+          body: JSON.stringify({ messageId: message.id }),
         });
         setMessages((prev) =>
           prev.map((m) => (m.id === message.id ? { ...m, is_read: true } : m)),

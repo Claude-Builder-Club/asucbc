@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { pool } from "@/lib/db";
+import { auth } from "@/lib/auth";
 
 export async function GET(req: NextRequest) {
-  const userId = req.nextUrl.searchParams.get("userId");
-  if (!userId) {
-    return NextResponse.json({ error: "Missing userId" }, { status: 400 });
+  const session = await auth.api.getSession({ headers: req.headers });
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+  const userId = session.user.id;
 
   const { rows } = await pool.query(
     `SELECT COUNT(*) AS count
@@ -14,7 +16,7 @@ export async function GET(req: NextRequest) {
        SELECT 1 FROM message_reads mr
        WHERE mr.message_id = m.id AND mr.user_id = $1
      )`,
-    [userId]
+    [userId],
   );
 
   return NextResponse.json({ count: parseInt(rows[0].count, 10) });

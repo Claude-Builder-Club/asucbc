@@ -35,7 +35,7 @@ export default function Sidebar() {
   const fetchUnreadCount = useCallback(async () => {
     if (!userId) return;
     try {
-      const res = await fetch(`/api/inbox/unread-count?userId=${userId}`);
+      const res = await fetch("/api/inbox/unread-count");
       if (res.ok) {
         const data = await res.json();
         setUnreadCount(data.count);
