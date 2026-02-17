@@ -223,16 +223,17 @@ export default function ClaudeRedeemForm() {
       if (response.ok) {
         setSubmitStatus("success");
         // Set localStorage cooldown
-        localStorage.setItem("claudeRedeemLastSubmission", formData.asuEmail);
         // setCooldownActive(true);
         // setCooldownEndTime(Date.now() + 24 * 60 * 60 * 1000);
         // Track successful submission
         if (typeof window !== "undefined" && (window as any).umami) {
           (window as any).umami.track("Claude Redeem - SUCCESS", {
             email: formData.asuEmail,
+            previous: localStorage.getItem("claudeRedeemLastSubmission"),
             hasReceivedCredits: formData.hasReceivedCredits,
           });
         }
+        localStorage.setItem("claudeRedeemLastSubmission", formData.asuEmail);
       } else {
         setSubmitStatus("error");
         setErrorMessage(
