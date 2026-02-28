@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Crimson_Pro } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -12,6 +12,12 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const crimsonPro = Crimson_Pro({
+  variable: "--font-crimson",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -38,7 +44,7 @@ export default function RootLayout({
       <head></head>
       <body
         suppressHydrationWarning
-        className={`${poppins.variable} antialiased absolute top-0 left-0 w-full h-[100dvh] overflow-auto`}
+        className={`${poppins.variable} ${crimsonPro.variable} antialiased absolute top-0 left-0 w-full h-[100dvh] overflow-auto`}
       >
         <ThemeProvider
           attribute="class"

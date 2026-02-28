@@ -24,8 +24,9 @@ export const teamMembers: TeamMember[] = [
     position: "President",
     image: "/staff/shiven.png",
     linkedinUrl: "https://www.linkedin.com/in/shiven-shekar/",
+    websiteUrl: "https://shivenshekar.com",
     description:
-      "I'm a senior studying Computer Science with a Software Engineering concentration at Arizona State University. My interests lie in AppliedML and Distributed Systems.",
+      "Incoming Apple Software Engineer and senior studying Computer Science with a Software Engineering concentration at Arizona State University. My interests lie in AppliedML and Distributed Systems.",
   },
 
   {
@@ -46,7 +47,7 @@ export const teamMembers: TeamMember[] = [
     position: "Technology",
     image: "/staff/john.png",
     description:
-      "John Li is a Full Stack Developer, Honors Student at Arizona State University, and Technical Officer of the Claude Builder Club. With a passion for building robust applications and leading technical initiatives, John combines hands-on development expertise with community leadership. As a technical officer, he spearheads innovative projects and fosters a collaborative environment for club members to explore the latest in AI and software development.",
+      "John Li is a Full Stack Developer, Honors Student at Arizona State University, Technical Officer of the Claude Builder Club, and incoming Tesla Software Engineer. With a passion for building robust applications and leading technical initiatives, John combines hands-on development expertise with community leadership. As a technical officer, he spearheads innovative projects and fosters a collaborative environment for club members to explore the latest in AI and software development.",
     linkedinUrl: "https://www.linkedin.com/in/johnli05/",
     websiteUrl: "https://tet.moe/",
   },
