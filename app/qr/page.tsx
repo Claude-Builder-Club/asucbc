@@ -2,7 +2,7 @@
 
 import { QRCodeSVG } from 'qrcode.react';
 import { motion } from 'framer-motion';
-import { Instagram, ExternalLink, Sparkles } from 'lucide-react';
+import { Instagram, ExternalLink, Sparkles, MessageCircle } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Heading, Text, Card, Button } from '../components/ui';
@@ -64,6 +64,7 @@ export default function QRPage() {
   const clubUrl = 'https://claudebuilder.club';
   const instagram = '@asu.cbc';
   const instagramUrl = `https://instagram.com/${instagram.replace('@', '')}`;
+  const discordUrl = 'https://discord.gg/PRh8F2XebB';
 
   return (
     <div className="min-h-[100dvh] max-h-[100dvh] relative overflow-y-auto">
@@ -80,7 +81,7 @@ export default function QRPage() {
             <motion.div variants={badgeVariants} className="inline-block mb-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--theme-card-bg)] border-2 border-[var(--theme-card-border)] rounded-full">
                 <Sparkles className="w-4 h-4 text-[var(--theme-text-accent)]" />
-                <Text size="sm" className="font-semibold text-[var(--theme-text-accent)]">
+                <Text size="lg" className="font-semibold text-[var(--theme-text-accent)]">
                   Connect With Us
                 </Text>
               </div>
@@ -94,144 +95,167 @@ export default function QRPage() {
 
             <motion.div variants={itemVariants}>
               <Text size="lg" variant="secondary" className="max-w-2xl mx-auto">
-                Scan the QR code or use the links below to visit our website and follow us on Instagram
+                Scan the QR codes to join our Discord community, visit our website, and follow us on Instagram
               </Text>
             </motion.div>
           </div>
 
-          {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - QR Code */}
+          {/* QR Code Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {/* Discord QR - Featured */}
             <motion.div
               variants={qrCardVariants}
-              className="flex justify-center lg:justify-end"
+              className="flex justify-center md:col-span-2 lg:col-span-1"
             >
               <Card
                 hoverable
                 gradient
                 animated={false}
-                className="inline-block p-8 sm:p-10"
+                className="inline-block p-8 sm:p-10 w-full"
               >
-                <div className="bg-white p-6 rounded-lg shadow-inner">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <MessageCircle className="w-5 h-5 text-[var(--theme-text-accent)]" />
+                  <Heading level="h3" animate={false} className="text-[var(--theme-text-accent)]">
+                    Join Discord
+                  </Heading>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-inner aspect-square">
                   <QRCodeSVG
-                    value={clubUrl}
-                    size={280}
+                    value={discordUrl}
+                    size={240}
                     level="H"
                     includeMargin={false}
-                    fgColor="#1a1a1a"
+                    fgColor="#5865F2"
                     bgColor="transparent"
+                    className='w-full h-full contrast-50'
                   />
                 </div>
 
                 <div className="mt-6 text-center">
-                  <Text size="sm" variant="secondary">
-                    Point your camera here
+                  <Text size="lg" variant="secondary" className="mb-3">
+                    Scan to join our community
                   </Text>
                 </div>
               </Card>
             </motion.div>
 
-            {/* Right side - Info & Links */}
+            {/* Website QR */}
             <motion.div
-              variants={itemVariants}
-              className="space-y-6 text-center lg:text-left"
+              variants={qrCardVariants}
+              className="flex justify-center"
             >
-              <div className="space-y-4">
-                <Heading level="h2" animate={false}>
-                  Join Our Community
-                </Heading>
-                <Text variant="secondary" className="max-w-md mx-auto lg:mx-0">
-                  Scan the QR code to visit our website and learn more about building with Claude AI at Arizona State University.
-                </Text>
-              </div>
-
-              {/* Action Cards */}
-              <div className="space-y-4">
-                <motion.div
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <a
-                    href={clubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <Card hoverable gradient animated={false} className="group">
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="flex-1">
-                          <Heading level="h4" animate={false} className="mb-2 group-hover:text-[var(--theme-text-accent)] transition-colors">
-                            Visit Website
-                          </Heading>
-                          <Text size="sm" variant="secondary" className="break-all">
-                            {clubUrl}
-                          </Text>
-                        </div>
-                        <ExternalLink className="w-6 h-6 text-[var(--theme-text-accent)] flex-shrink-0" />
-                      </div>
-                    </Card>
-                  </a>
-                </motion.div>
-
-                <motion.div
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  <a
-                    href={instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <Card hoverable gradient animated={false} className="group">
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="flex-1">
-                          <Heading level="h4" animate={false} className="mb-2 group-hover:text-[var(--theme-text-accent)] transition-colors">
-                            Follow on Instagram
-                          </Heading>
-                          <Text size="sm" variant="secondary">
-                            {instagram}
-                          </Text>
-                        </div>
-                        <Instagram className="w-6 h-6 text-[var(--theme-text-accent)] flex-shrink-0" />
-                      </div>
-                    </Card>
-                  </a>
-                </motion.div>
-              </div>
-
-              {/* CTA Buttons */}
-              <motion.div
-                variants={itemVariants}
-                className="flex flex-col sm:flex-row gap-4 pt-4"
+              <Card
+                hoverable
+                gradient
+                animated={false}
+                className="inline-block p-8 sm:p-10 w-full"
               >
-                <a
-                  href={clubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1"
-                >
-                  <Button variant="primary" size="lg" fullWidth>
-                    <ExternalLink className="w-5 h-5" />
-                    <span>Visit Site</span>
-                  </Button>
-                </a>
-                <a
-                  href={instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1"
-                >
-                  <Button variant="secondary" size="lg" fullWidth>
-                    <Instagram className="w-5 h-5" />
-                    <span>Follow Us</span>
-                  </Button>
-                </a>
-              </motion.div>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <ExternalLink className="w-5 h-5 text-[var(--theme-text-accent)]" />
+                  <Heading level="h4" animate={false}>
+                    Website
+                  </Heading>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-inner aspect-square">
+                  <QRCodeSVG
+                    value={clubUrl}
+                    size={240}
+                    level="H"
+                    includeMargin={false}
+                    fgColor="#1a1a1a"
+                    bgColor="transparent"
+                    className='w-full h-full'
+                  />
+                </div>
+
+                <div className="mt-6 text-center">
+                  <Text size="lg" variant="secondary">
+                    Visit our site
+                  </Text>
+                </div>
+              </Card>
+            </motion.div>
+
+            {/* Instagram QR */}
+            <motion.div
+              variants={qrCardVariants}
+              className="flex justify-center"
+            >
+              <Card
+                hoverable
+                gradient
+                animated={false}
+                className="inline-block p-8 sm:p-10 w-full"
+              >
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Instagram className="w-5 h-5 text-[var(--theme-text-accent)]" />
+                  <Heading level="h4" animate={false}>
+                    Instagram
+                  </Heading>
+                </div>
+
+                <div className="bg-white p-6 rounded-lg shadow-inner aspect-square">
+                  <QRCodeSVG
+                    value={instagramUrl}
+                    size={240}
+                    level="H"
+                    includeMargin={false}
+                    fgColor="#E4405F"
+                    bgColor="transparent"
+                    className='w-full h-full contrast-50'
+                  />
+                </div>
+
+                <div className="mt-6 text-center">
+                  <Text size="lg" variant="secondary">
+                    {instagram}
+                  </Text>
+                </div>
+              </Card>
             </motion.div>
           </div>
+
+          {/* Quick Action Buttons */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto"
+          >
+            <a
+              href={discordUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 min-w-[200px] max-w-[300px]"
+            >
+              <Button variant="primary" size="lg" fullWidth>
+                <MessageCircle className="w-5 h-5" />
+                <span>Join Discord</span>
+              </Button>
+            </a>
+            <a
+              href={clubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 min-w-[200px] max-w-[300px]"
+            >
+              <Button variant="secondary" size="lg" fullWidth>
+                <ExternalLink className="w-5 h-5" />
+                <span>Visit Site</span>
+              </Button>
+            </a>
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 min-w-[200px] max-w-[300px]"
+            >
+              <Button variant="secondary" size="lg" fullWidth>
+                <Instagram className="w-5 h-5" />
+                <span>Follow Us</span>
+              </Button>
+            </a>
+          </motion.div>
 
           {/* Bottom Info Section */}
           <motion.div
@@ -241,12 +265,12 @@ export default function QRPage() {
             <Card gradient animated={false} className="max-w-3xl mx-auto">
               <div className="space-y-3">
                 <Heading level="h3" animate={false}>
-                  About the Club
+                  Why Join Discord?
                 </Heading>
                 <Text variant="secondary">
-                  The Arizona State University Claude Builder Club is dedicated to exploring the
-                  cutting-edge capabilities of Anthropic's Claude AI. We foster innovation, collaboration,
-                  and learning in the rapidly evolving field of artificial intelligence.
+                  Our Discord is the hub for the ASU Claude Builder Club community. Get real-time support,
+                  collaborate on projects, share your builds, participate in workshops, and connect with fellow
+                  AI enthusiasts. Whether you're just starting or already building with Claude, you'll find your place here.
                 </Text>
               </div>
             </Card>
