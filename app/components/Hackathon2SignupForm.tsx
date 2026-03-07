@@ -160,7 +160,7 @@ export default function Hackathon2SignupForm() {
 
   // Show congratulations screen on success
   if (submitStatus === "success") {
-    return <HackathonCongratulations onReset={handleReset} />;
+    return <HackathonCongratulations onReset={handleReset} hackathonName="Claude Builder Club Hackathon 2026" eventDates="March 20-22, 2026" />;
   }
 
   return (

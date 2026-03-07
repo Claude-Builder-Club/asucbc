@@ -6,6 +6,8 @@ import Link from "next/link";
 
 type HackathonCongratulationsProps = {
   onReset?: () => void;
+  hackathonName?: string;
+  eventDates?: string;
 };
 
 const containerVariants = {
@@ -53,6 +55,8 @@ const confettiVariants = {
 
 export default function HackathonCongratulations({
   onReset,
+  hackathonName = "HackASU 2026",
+  eventDates = "March 20-22, 2026",
 }: HackathonCongratulationsProps) {
   return (
     <motion.div
@@ -124,7 +128,7 @@ export default function HackathonCongratulations({
 
       <motion.div variants={itemVariants}>
         <Text size="xl" variant="primary" className="mb-6 font-semibold">
-          You're registered for the HackASU 2025!
+          You're registered for the {hackathonName}!
         </Text>
       </motion.div>
 
@@ -163,7 +167,7 @@ export default function HackathonCongratulations({
                 <span className="text-[var(--theme-text-accent)] text-sm font-bold">3</span>
               </div>
               <Text size="base" variant="primary">
-                <strong>Mark your calendar</strong> for November 8-9, 2025
+                <strong>Mark your calendar</strong> for {eventDates}
               </Text>
             </div>
           </div>

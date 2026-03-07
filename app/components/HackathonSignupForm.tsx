@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Heading, Text, Label, Input, Button, ButtonGroup } from "./ui";
 import HackathonCongratulations from "./HackathonCongratulations";
 
@@ -194,7 +194,7 @@ export default function HackathonSignupForm() {
 
   // Show congratulations screen on success
   if (submitStatus === "success") {
-    return <HackathonCongratulations onReset={handleReset} />;
+    return <HackathonCongratulations onReset={handleReset} hackathonName="HackASU 2025" eventDates="November 8-9, 2025" />;
   }
 
   return (
