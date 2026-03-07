@@ -93,7 +93,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "ben",
     name: "Ben Juntilla",
-    position: "Operations",
+    position: "Technology",
     image: "/staff/claude.svg",
   },
   {
@@ -104,6 +104,21 @@ export const teamMembers: TeamMember[] = [
     linkedinUrl: "https://www.linkedin.com/in/anirudh-manjesh-978ba5194/",
     description:
       "Computer Science senior at ASU’s Barrett Honors College, experienced in full-stack development, AI/ML, and accessibility technology research. Passionate about building agentic AI systems, collaborating on open source projects, and optimizing technology for real-world impact. Active in hackathons and technical conferences, with a proven track record in deploying machine learning solutions and leading research initiatives. Always exploring new ways to advance software, mentor peers, and make technology more inclusive.",
+  },
+  {
+    id: "anmol",
+    name: "Anmol Hurkat",
+    position: "Technology",
+    image: "/staff/claude.svg",
+    linkedinUrl: "https://www.linkedin.com/in/anmolhurkat/",
+  },
+  {
+    id: "vishnu",
+    name: "Vishnu Vardhana Reddy Devi",
+    position: "Technology",
+    image: "/staff/vishnu.png",
+    linkedinUrl: "https://www.linkedin.com/in/vishnuvardhana-reddy-devi-reddy-8530392a1",
+    websiteUrl: "https://vishnuvardhana.vercel.app/",
   },
 ];
 
