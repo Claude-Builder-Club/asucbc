@@ -3,6 +3,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ClaudeRedeemForm from "../components/ClaudeRedeemForm";
+import CalendarActions from "../components/calendar/CalendarActions";
 import { Heading, Text, Badge, Card } from "../components/ui";
 import { motion } from "framer-motion";
 
@@ -78,8 +79,15 @@ export default function RedeemPage() {
               initial="hidden"
               animate="visible"
             >
-              <Heading level="h1" animate={false} className="leading-tight mb-2">
-                Free <span className="text-[var(--theme-text-accent)] font-bold">Claude Pro + API Credits</span>
+              <Heading
+                level="h1"
+                animate={false}
+                className="leading-tight mb-2"
+              >
+                Free{" "}
+                <span className="text-[var(--theme-text-accent)] font-bold">
+                  Claude Pro + API Credits
+                </span>
               </Heading>
             </motion.div>
             <motion.div
@@ -89,15 +97,22 @@ export default function RedeemPage() {
               whileHover={{ scale: 1.05, rotate: [0, -2, 2, -2, 0] }}
               className="inline-block mb-4 cursor-default"
             >
-              <Badge variant="primary" size="lg">EXCLUSIVE SEMESTER OFFER</Badge>
+              <Badge variant="primary" size="lg">
+                EXCLUSIVE SEMESTER OFFER
+              </Badge>
             </motion.div>
             <motion.div
               variants={descriptionVariants}
               initial="hidden"
               animate="visible"
             >
-              <Text size="xl" variant="secondary" className="max-w-2xl mx-auto leading-relaxed">
-                Get free Claude Pro for the semester + API credits. Location verification required.
+              <Text
+                size="xl"
+                variant="secondary"
+                className="max-w-2xl mx-auto leading-relaxed"
+              >
+                Get free Claude Pro for the semester + API credits. Location
+                verification required.
               </Text>
             </motion.div>
           </div>
@@ -111,6 +126,24 @@ export default function RedeemPage() {
             <Card gradient animated={false} className="shadow-xl">
               <ClaudeRedeemForm />
             </Card>
+          </motion.div>
+
+          {/* Add to Calendar */}
+          <motion.div
+            variants={formVariants}
+            initial="hidden"
+            animate="visible"
+            className="mt-8 text-center"
+          >
+            <Text size="sm" variant="secondary" className="mb-3">
+              Stay updated on upcoming Claude Builder Club events!
+            </Text>
+            <CalendarActions
+              calendarId={process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_ID || ""}
+              className="flex justify-center mt-3"
+              buttonSize="md"
+              buttonClassName="px-16"
+            />
           </motion.div>
         </div>
       </div>

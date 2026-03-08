@@ -1,28 +1,37 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { getCalendarSubscriptionUrl } from '@/lib/calendar/google';
-import { Button } from '../ui';
+import React from "react";
+import { getCalendarSubscriptionUrl } from "@/lib/calendar/google";
+import { Button } from "../ui";
 
 interface CalendarActionsProps {
   calendarId: string;
   selectedDate?: Date | null;
+  className?: string;
+  buttonSize?: "sm" | "md" | "lg";
+  buttonClassName?: string;
 }
 
-export default function CalendarActions({ calendarId, selectedDate }: CalendarActionsProps) {
+export default function CalendarActions({
+  calendarId,
+  selectedDate,
+  className,
+  buttonSize = "sm",
+  buttonClassName,
+}: CalendarActionsProps) {
   const subscriptionUrl = getCalendarSubscriptionUrl(calendarId);
 
   const handleAddToCalendar = () => {
-    window.open(subscriptionUrl, '_blank', 'noopener,noreferrer');
+    window.open(subscriptionUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <div className="flex justify-end mt-4">
+    <div className={className ?? "flex justify-end mt-4"}>
       <Button
         onClick={handleAddToCalendar}
         variant="primary"
-        size="sm"
-        className="flex items-center gap-2"
+        size={buttonSize}
+        className={`flex items-center gap-2${buttonClassName ? ` ${buttonClassName}` : ""}`}
       >
         <svg
           className="w-4 h-4"
