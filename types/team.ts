@@ -110,6 +110,7 @@ export const teamMembers: TeamMember[] = [
     name: "Anmol Hurkat",
     position: "Technology",
     image: "/staff/claude.svg",
+    description: "Computer Science junior passionate about full-stack and systems programming, particularly interested in backend development and building AI products and tooling.",
     linkedinUrl: "https://www.linkedin.com/in/anmolhurkat/",
   },
   {
