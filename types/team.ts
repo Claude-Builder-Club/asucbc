@@ -114,6 +114,16 @@ export const teamMembers: TeamMember[] = [
     linkedinUrl: "https://www.linkedin.com/in/anmolhurkat/",
   },
   {
+    id: "wenzel",
+    name: "Wenzel Escudero",
+    position: "Technology",
+    image: "/staff/claude.svg",
+    linkedinUrl: "https://www.linkedin.com/in/wenzelescudero",
+    websiteUrl: "https://wnzel.com/",
+    description:
+      "Wenzel Escudero is a senior Computer Science student at Arizona State University focused on full-stack development. He enjoys creating tools, experimenting with emerging technologies, and contributing to projects that help students explore AI and software development.",
+  },
+  {
     id: "vishnu",
     name: "Vishnu Vardhana Reddy Devi",
     position: "Technology",
