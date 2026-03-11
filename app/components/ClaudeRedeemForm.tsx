@@ -292,6 +292,8 @@ export default function ClaudeRedeemForm() {
     return `${hours}h ${minutes}m`;
   };
 
+  const calendarUrl = getCalendarSubscriptionUrl();
+
   return (
     <div className="max-w-2xl mx-auto pt-8 sm:pt-12 md:pt-16">
       <div className="mb-8">
@@ -524,16 +526,13 @@ export default function ClaudeRedeemForm() {
               "Redeem Claude Credits"
             )}
           </Button>
-          {getCalendarSubscriptionUrl() && (
+          {calendarUrl && (
             <Button
               type="button"
               variant="secondary"
               size="lg"
               className="w-1/2 flex items-center justify-center gap-2"
-              onClick={() => {
-                const url = getCalendarSubscriptionUrl();
-                if (url) window.open(url, '_blank', 'noopener,noreferrer');
-              }}
+              onClick={() => window.open(calendarUrl, '_blank', 'noopener,noreferrer')}
             >
               <svg
                 className="w-4 h-4"
