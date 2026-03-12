@@ -126,13 +126,14 @@ export default function Hackathon2() {
               MARCH 20-22, 2026
             </div>
 
-
             <Heading
               level="h1"
               animate={false}
               className="text-6xl sm:text-7xl md:text-8xl font-black mb-6 leading-none"
             >
-              <span className="text-[var(--theme-text-primary)]">Claude Builder Club</span>
+              <span className="text-[var(--theme-text-primary)]">
+                Claude Builder Club
+              </span>
               <br />
               <span className="text-[var(--theme-text-accent)]">Hackathon</span>
             </Heading>
@@ -173,7 +174,11 @@ export default function Hackathon2() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card gradient animated={false} className="relative overflow-hidden border-2 border-[var(--theme-text-accent)]">
+            <Card
+              gradient
+              animated={false}
+              className="relative overflow-hidden border-2 border-[var(--theme-text-accent)]"
+            >
               <div className="text-center mb-6">
                 <div className="inline-flex items-center gap-2 mb-3">
                   <span className="text-3xl">📍</span>
@@ -225,7 +230,13 @@ export default function Hackathon2() {
                 {/* Important Note */}
                 <div className="p-4 bg-[var(--theme-text-accent)]/10 rounded-lg border-l-4 border-[var(--theme-text-accent)]">
                   <p className="text-sm font-semibold text-[var(--theme-text-primary)]">
-                    <span className="text-[var(--theme-text-accent)]">⚠️ Important:</span> If you registered on Sun Devil Connect, you must also register here to confirm your attendance!
+                    <span className="text-[var(--theme-text-accent)]">
+                      ⚠️ Important:
+                    </span>{" "}
+                    If you registered on Sun Devil Connect, you must also
+                    register here to confirm your attendance. Non-ASU and
+                    graduated students are welcome to participate in the hackathon,
+                    but they are not eligible to receive prizes.
                   </p>
                 </div>
               </div>
@@ -410,10 +421,13 @@ export default function Hackathon2() {
             <Card gradient animated={false} className="text-center p-8 sm:p-12">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[var(--theme-text-primary)]">
                 Interested in{" "}
-                <span className="text-[var(--theme-text-accent)]">Sponsoring?</span>
+                <span className="text-[var(--theme-text-accent)]">
+                  Sponsoring?
+                </span>
               </h2>
               <Text size="lg" className="mb-6 max-w-2xl mx-auto">
-                Support innovation and connect with talented developers building the future
+                Support innovation and connect with talented developers building
+                the future
               </Text>
               <Link href="/industry">
                 <Button size="lg" className="text-lg px-10 py-6">
@@ -439,8 +453,8 @@ export default function Hackathon2() {
               <span className="text-[var(--theme-text-accent)]">Create?</span>
             </Heading>
             <Text size="lg" className="mb-8 max-w-2xl mx-auto">
-              Join us for an unforgettable weekend of innovation, collaboration, and creativity.
-              All skill levels welcome!
+              Join us for an unforgettable weekend of innovation, collaboration,
+              and creativity. All skill levels welcome!
             </Text>
             <Link href="/hackathon2/signup">
               <Button size="lg" className="text-lg px-10 py-6">

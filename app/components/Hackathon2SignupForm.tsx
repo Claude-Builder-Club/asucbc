@@ -191,8 +191,17 @@ export default function Hackathon2SignupForm() {
 
         {/* SDC Registration Disclaimer */}
         <div className="mt-4 p-4 bg-[var(--theme-text-accent)]/10 rounded-lg border-l-4 border-[var(--theme-text-accent)]">
-          <Text size="sm" className="font-semibold text-[var(--theme-text-primary)]">
-            <span className="text-[var(--theme-text-accent)]">⚠️ Important:</span> If you're registered on SDC (Sun Devil Connect), you must also register here to confirm your attendance.
+          <Text
+            size="sm"
+            className="font-semibold text-[var(--theme-text-primary)]"
+          >
+            <span className="text-[var(--theme-text-accent)]">
+              ⚠️ Important:
+            </span>{" "}
+            If you're registered on SDC (Sun Devil Connect), you must also
+            register here to confirm your attendance. Non-ASU and graduated
+            students are welcome to participate in the hackathon, but they are
+            not eligible to receive prizes.
           </Text>
         </div>
 
@@ -200,9 +209,16 @@ export default function Hackathon2SignupForm() {
         <div
           className="mt-4 flex items-center gap-3 cursor-pointer"
           onClick={() => {
-            const next = formData.registrationType === "caseCompetition" ? "hackathon" : "caseCompetition";
+            const next =
+              formData.registrationType === "caseCompetition"
+                ? "hackathon"
+                : "caseCompetition";
             setFormData((prev) => ({ ...prev, registrationType: next }));
-            setErrors((prev) => ({ ...prev, github: undefined, linkedin: undefined }));
+            setErrors((prev) => ({
+              ...prev,
+              github: undefined,
+              linkedin: undefined,
+            }));
           }}
         >
           <Toggle
@@ -210,8 +226,12 @@ export default function Hackathon2SignupForm() {
             onChange={() => {}}
           />
           <Text size="sm" variant="secondary" className="flex-1">
-            <span className="font-bold text-[var(--theme-text-primary)]">Switch to Case Competition Registration</span>{" "}
-            <span className="text-[var(--theme-text-accent)]">(winner may be interviewed by sponsor)</span>
+            <span className="font-bold text-[var(--theme-text-primary)]">
+              Switch to Case Competition Registration
+            </span>{" "}
+            <span className="text-[var(--theme-text-accent)]">
+              (winner may be interviewed by sponsor)
+            </span>
           </Text>
         </div>
       </div>
@@ -296,7 +316,9 @@ export default function Hackathon2SignupForm() {
               <Button
                 key={option.value}
                 type="button"
-                variant={formData.year === option.value ? "secondary" : "outline"}
+                variant={
+                  formData.year === option.value ? "secondary" : "outline"
+                }
                 size="md"
                 onClick={() => {
                   setFormData((p) => ({ ...p, year: option.value }));
@@ -304,8 +326,10 @@ export default function Hackathon2SignupForm() {
                     setErrors((prev) => ({ ...prev, year: undefined }));
                   }
                   // Track year selection
-                  if (typeof window !== 'undefined' && (window as any).umami) {
-                    (window as any).umami.track('Hackathon2 Year Selected', { year: option.value });
+                  if (typeof window !== "undefined" && (window as any).umami) {
+                    (window as any).umami.track("Hackathon2 Year Selected", {
+                      year: option.value,
+                    });
                   }
                 }}
                 className="w-full"
@@ -321,21 +345,19 @@ export default function Hackathon2SignupForm() {
 
         {/* Looking for Team Member */}
         <div>
-          <Label required>
-            Are you looking for team members?
-          </Label>
+          <Label required>Are you looking for team members?</Label>
           <ButtonGroup
             options={[
               {
                 value: true,
-                label: 'Yes',
-                description: 'I need teammates'
+                label: "Yes",
+                description: "I need teammates",
               },
               {
                 value: false,
-                label: 'No',
-                description: 'I have a team or going solo'
-              }
+                label: "No",
+                description: "I have a team or going solo",
+              },
             ]}
             value={formData.lookingForTeam}
             onChange={(value) => {
@@ -343,8 +365,10 @@ export default function Hackathon2SignupForm() {
                 ...prev,
                 lookingForTeam: value,
               }));
-              if (typeof window !== 'undefined' && (window as any).umami) {
-                (window as any).umami.track('Hackathon2 Team Search', { lookingForTeam: value });
+              if (typeof window !== "undefined" && (window as any).umami) {
+                (window as any).umami.track("Hackathon2 Team Search", {
+                  lookingForTeam: value,
+                });
               }
             }}
             columns={2}
@@ -390,9 +414,7 @@ export default function Hackathon2SignupForm() {
           </div>
         ) : (
           <div>
-            <Label htmlFor="linkedin">
-              LinkedIn Profile URL
-            </Label>
+            <Label htmlFor="linkedin">LinkedIn Profile URL</Label>
             <Input
               type="text"
               id="linkedin"
@@ -442,10 +464,10 @@ export default function Hackathon2SignupForm() {
                 </svg>
                 Submitting...
               </span>
+            ) : formData.registrationType === "caseCompetition" ? (
+              "Submit Case Competition Registration"
             ) : (
-              formData.registrationType === "caseCompetition"
-                ? "Submit Case Competition Registration"
-                : "Submit Registration"
+              "Submit Registration"
             )}
           </Button>
         </div>
@@ -454,7 +476,10 @@ export default function Hackathon2SignupForm() {
       {/* Sponsor Information */}
       <div className="mt-8 p-6 bg-gradient-to-br from-[var(--theme-gradient-accent)] to-transparent rounded-lg border-2 border-[var(--theme-card-border)]">
         <div className="text-center">
-          <Text size="lg" className="font-bold mb-2 text-[var(--theme-text-primary)]">
+          <Text
+            size="lg"
+            className="font-bold mb-2 text-[var(--theme-text-primary)]"
+          >
             Interested in Sponsoring?
           </Text>
           <Text size="sm" variant="secondary" className="mb-4">
