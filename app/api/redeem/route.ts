@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { checkRateLimit, getIp, rateLimiters } from "@/lib/ratelimit";
 
 interface RedeemFormData {
   firstName: string;
@@ -125,6 +126,9 @@ async function sendToDiscordWebhook(
 }
 
 export async function POST(request: NextRequest) {
+  const rateLimitResponse = await checkRateLimit(rateLimiters.redeem, getIp(request));
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const formData: RedeemFormData = await request.json();
 

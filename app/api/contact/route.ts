@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { checkRateLimit, getIp, rateLimiters } from "@/lib/ratelimit";
 
 const requiredEnvVars = [
   "SMTP_HOST",
@@ -78,6 +79,9 @@ const sendDiscordNotification = async (submission: ContactSubmission) => {
 };
 
 export async function POST(request: NextRequest) {
+  const rateLimitResponse = await checkRateLimit(rateLimiters.contact, getIp(request));
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const formData = await request.formData();
     const name = sanitize(formData.get("name"));

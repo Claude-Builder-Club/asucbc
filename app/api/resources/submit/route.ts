@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-
-type ResourceSubmission = {
-  id: string;
-  title: string;
-  link: string;
-  description: string;
-};
+import type { Resource } from "@/types/resource";
+import { checkRateLimit, getIp, rateLimiters } from "@/lib/ratelimit";
 
 const slugify = (text: string) =>
   text
@@ -16,6 +11,9 @@ const slugify = (text: string) =>
     .replace(/^-+|-+$/g, "");
 
 export async function POST(request: NextRequest) {
+  const rateLimitResponse = await checkRateLimit(rateLimiters.resourcesSubmit, getIp(request));
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const body: unknown = await request.json();
 
@@ -45,7 +43,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
     }
 
-    const resource: ResourceSubmission = {
+    const resource: Resource = {
       id: slugify(trimmedTitle),
       title: trimmedTitle,
       link: trimmedLink,
