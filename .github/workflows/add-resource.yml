@@ -1,0 +1,67 @@
+name: Add Resource
+
+on:
+  repository_dispatch:
+    types: [add-resource]
+
+jobs:
+  add-resource:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Append resource to resources.json
+        env:
+          RESOURCE_ID: ${{ github.event.client_payload.id }}
+          RESOURCE_TITLE: ${{ github.event.client_payload.title }}
+          RESOURCE_LINK: ${{ github.event.client_payload.link }}
+          RESOURCE_DESCRIPTION: ${{ github.event.client_payload.description }}
+        run: |
+          node - <<'EOF'
+          const fs = require("fs");
+          const path = "app/data/resources.json";
+          const resources = JSON.parse(fs.readFileSync(path, "utf8"));
+
+          const id = process.env.RESOURCE_ID;
+          if (resources.some((r) => r.id === id)) {
+            console.error(`Duplicate resource ID: ${id}`);
+            process.exit(1);
+          }
+
+          resources.push({
+            id,
+            title: process.env.RESOURCE_TITLE,
+            link: process.env.RESOURCE_LINK,
+            description: process.env.RESOURCE_DESCRIPTION,
+          });
+
+          fs.writeFileSync(path, JSON.stringify(resources, null, 2) + "\n");
+          console.log(`Appended resource: ${id}`);
+          EOF
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: resource/${{ github.event.client_payload.id }}
+          commit-message: "feat(resources): add ${{ github.event.client_payload.title }}"
+          title: "feat(resources): add ${{ github.event.client_payload.title }}"
+          body: |
+            Community-submitted resource.
+
+            **Title:** ${{ github.event.client_payload.title }}
+            **Link:** ${{ github.event.client_payload.link }}
+            **Description:** ${{ github.event.client_payload.description }}
+
+            _Submitted via /resources/submit_
+          labels: resources

@@ -87,6 +87,18 @@ export const getNavigationItems = (): NavigationItem[] => {
       umamiEvent: "Nav - Contact",
       variant: "default",
     },
+    {
+      label: "Resources",
+      href: "/resources",
+      description: "Community-curated resources for ASU students",
+      category: "main",
+      showInHeader: true,
+      showInCommandMenu: true,
+      keywords: ["resources", "guides", "tools", "links"],
+      icon: "📚",
+      umamiEvent: "Nav - Resources",
+      variant: "default",
+    },
     
     {
       label: "Apply",
