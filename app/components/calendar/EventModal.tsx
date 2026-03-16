@@ -56,6 +56,8 @@ export default function EventModal({ event, isOpen, onClose, onAddToCalendar }: 
     links.forEach((link) => {
       // Skip if icon already added
       if (link.querySelector('.description-link-icon')) return;
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
       link.style.textDecoration = 'underline';
       link.style.textUnderlineOffset = '2px';
       link.style.textDecorationColor = 'white';
