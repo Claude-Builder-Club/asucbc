@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { checkRateLimit, getIp, rateLimiters } from "@/lib/ratelimit";
 
 // Email routing per position
 const POSITION_EMAILS: Record<string, { to: string[]; cc?: string[] }> = {
@@ -191,6 +192,9 @@ Submitted: ${new Date(params.submittedAt).toLocaleString("en-US", { timeZone: "A
 // ─── Route handler ────────────────────────────────────────────────────────────
 
 export async function POST(request: NextRequest) {
+  const rateLimitResponse = await checkRateLimit(rateLimiters.apply, getIp(request));
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const formData = await request.formData();
 

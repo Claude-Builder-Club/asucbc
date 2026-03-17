@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { checkRateLimit, getIp, rateLimiters } from "@/lib/ratelimit";
 
 // Create a transporter for sending emails
 const createTransporter = () => {
@@ -23,6 +24,9 @@ const createTransporter = () => {
 };
 
 export async function POST(request: NextRequest) {
+  const rateLimitResponse = await checkRateLimit(rateLimiters.hackathon, getIp(request));
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const formData = await request.formData();
 

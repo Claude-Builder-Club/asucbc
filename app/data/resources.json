@@ -1,0 +1,62 @@
+[
+  {
+    "id": "chatgpt-edu-asurite",
+    "title": "ChatGPT Edu",
+    "link": "https://ai.asu.edu/chatgpt-edu",
+    "description": "Access ChatGPT Edu through your ASUrite login. The best way to use ChatGPT for free."
+  },
+  {
+    "id": "claude-pro-cbc",
+    "title": "Claude Pro",
+    "link": "https://www.claudebuilder.club",
+    "description": "Get Claude Pro through the ASU Claude Builder Club. Access Claude Opus 4.6, Claude Sonnet 4.6, and get free access to Claude Code."
+  },
+  {
+    "id": "gemini-pro-asurite",
+    "title": "Gemini Pro",
+    "link": "https://gemini.google/students/",
+    "description": "Access Gemini Pro through your ASUrite login. Great for calendar management, screenshot-to-event parsing, and use with the Antigravity IDE."
+  },
+  {
+    "id": "github-education-pack",
+    "title": "GitHub Education Pack",
+    "link": "https://education.github.com/pack",
+    "description": "Free GitHub Pro plus a huge bundle of developer tools including GitHub Copilot (tab complete + agent in VS Code), JetBrains IDEs, and much more — all with your .edu email."
+  },
+  {
+    "id": "cursor-edu",
+    "title": "Cursor Pro",
+    "link": "https://cursor.com/en-US/students",
+    "description": "AI-first code editor. Sign up with your .edu email for one year of Cursor Pro for free."
+  },
+  {
+    "id": "windsurf-edu",
+    "title": "Windsurf",
+    "link": "https://windsurf.com/editor/students",
+    "description": "Codeium's AI-powered IDE. Get 50% off Pro with a .edu email address."
+  },
+  {
+    "id": "jetbrains-edu",
+    "title": "JetBrains IDEs",
+    "link": "https://www.jetbrains.com/academy/student-pack/",
+    "description": "Free access to the full JetBrains suite (IntelliJ, PyCharm, WebStorm, etc.) including AI Assistant, via the GitHub Education Pack."
+  },
+  {
+    "id": "microsoft-365-free-premium",
+    "title": "Microsoft 365 Premium",
+    "link": "https://www.microsoft.com/en-us/microsoft-365/college-student-pricing?ocid=cmm1b8w88o5",
+    "description": "Free Microsoft 365 for college students — includes Word, Excel, PowerPoint, Teams, and Copilot AI integration across all apps."
+  },
+  {
+    "id": "zed-pro-free-students",
+    "title": "Zed Pro",
+    "link": "https://zed.dev/education",
+    "description": "AI-powered code editor like Cursor. Sign up with your .edu email for one year of Zed Pro for free. Includes $10 of AI tokens and unlimited edit predictions."
+  },
+  {
+    "id": "v0-premium-free-students",
+    "title": "v0 Premium",
+    "link": "https://v0.app/students",
+    "description": "AI website builder by Vercel. Generate websites and frontend mockups with the latest models. Get 1 year of free access with a ASU .edu email address."
+  }
+]
