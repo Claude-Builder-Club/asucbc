@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import GradualBlur from "./ui/GradualBlur";
 import { getHeaderNavigationItems } from "@/lib/navigation-config";
 import CommandMenu from "./CommandMenu";
 import { showHackathonPromo } from "@/app/theme-config";
@@ -11,7 +10,12 @@ import { showHackathonPromo } from "@/app/theme-config";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCommandMenuOpen, setIsCommandMenuOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
   const navigationItems = getHeaderNavigationItems();
+
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad|iPod/.test(navigator.userAgent));
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -169,9 +173,9 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsCommandMenuOpen(true)}
-                className="relative z-10 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] transition-all duration-200 p-3 rounded-md hover:bg-white/10 min-h-[48px] min-w-[48px] flex items-center justify-center touch-manipulation"
+                className="relative z-10 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] transition-all duration-200 px-3 py-2 rounded-md hover:bg-white/10 min-h-[48px] flex items-center gap-2 touch-manipulation"
                 aria-label="Open command menu"
-                title="Search (⌘K)"
+                title={`Search (${isMac ? "⌘" : "Ctrl+"}K)`}
               >
                 <svg
                   className="w-5 h-5"
@@ -186,6 +190,14 @@ export default function Header() {
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
+                <span className="flex items-center gap-0.5 text-xs text-[var(--theme-text-primary)]/60">
+                  <kbd className="inline-flex items-center justify-center min-w-[20px] h-5 px-1 rounded border border-[var(--theme-text-primary)]/20 bg-[var(--theme-text-primary)]/5 font-sans font-medium">
+                    {isMac ? "⌘" : "Ctrl"}
+                  </kbd>
+                  <kbd className="inline-flex items-center justify-center min-w-[20px] h-5 px-1 rounded border border-[var(--theme-text-primary)]/20 bg-[var(--theme-text-primary)]/5 font-sans font-medium">
+                    K
+                  </kbd>
+                </span>
               </motion.button>
             </motion.div>
           </nav>
