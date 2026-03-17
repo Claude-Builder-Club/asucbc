@@ -7,11 +7,13 @@
     "build": "next build --turbopack",
     "start": "next start",
     "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:debug": "playwright test --debug"
+    "test:e2e:debug": "playwright test --debug",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fullcalendar/daygrid": "^6.1.19",
@@ -31,6 +33,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "dompurify": "^3.2.7",
+    "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.552.0",

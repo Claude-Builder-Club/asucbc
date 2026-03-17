@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDb } from "@/db";
-import { resourceSubmissions } from "@/db/schema";
+import { getDb } from "@/lib/db";
+import { resourceSubmissions } from "@/lib/db/schema";
 import { checkRateLimit, getIp, rateLimiters } from "@/lib/ratelimit";
 
 interface ResourceSubmission {
