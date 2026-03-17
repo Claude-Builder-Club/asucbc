@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { CalendarState, CalendarEvent } from '@/types/calendar';
 import { createCalendarMonth } from '@/lib/calendar/utils';
 import { getEventsForMonth } from '@/lib/calendar/google';
@@ -111,23 +111,22 @@ export default function CalendarContainer({ className = '' }: CalendarContainerP
     }
   };
 
-  const handleSelectDate = (date: Date) => {
+  const handleSelectDate = useCallback((date: Date) => {
     setCalendarState(prev => ({ ...prev, selectedDate: date }));
-  };
+  }, []);
 
-  const handleEventClick = (event: CalendarEvent) => {
+  const handleEventClick = useCallback((event: CalendarEvent) => {
     setSelectedEvent(event);
     setIsModalOpen(true);
-    // Track event click
     if (typeof window !== 'undefined' && (window as any).umami) {
       (window as any).umami.track('Calendar Event Click', { eventName: event.summary });
     }
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setSelectedEvent(null);
-  };
+  }, []);
 
   const navigation = {
     goToPreviousMonth: handlePreviousMonth,

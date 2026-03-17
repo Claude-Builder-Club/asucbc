@@ -1,31 +1,36 @@
 'use client';
 
-import React from 'react';
+import { memo, useCallback } from 'react';
 import { CalendarDay as CalendarDayType, CalendarEvent } from '@/types/calendar';
 import { truncateEventSummary } from '@/lib/calendar/utils';
 
 interface CalendarDayProps {
   day: CalendarDayType;
-  onSelect: () => void;
+  onSelectDate: (date: Date) => void;
   onEventClick?: (event: CalendarEvent) => void;
 }
 
-export default function CalendarDay({ day, onSelect, onEventClick }: CalendarDayProps) {
+export default memo(function CalendarDay({ day, onSelectDate, onEventClick }: CalendarDayProps) {
   const dayNumber = day.date.getDate();
   const isCurrentMonth = day.isCurrentMonth;
   const isToday = day.isToday;
   const isSelected = day.isSelected;
   const hasEvents = day.hasEvents;
 
-  const handleDayClick = () => {
+  const handleDayClick = useCallback(() => {
     if (hasEvents && day.events.length > 0 && onEventClick) {
-      // If day has events, show the first event's details
       onEventClick(day.events[0]);
     } else {
-      // Otherwise, just select the day
-      onSelect();
+      onSelectDate(day.date);
     }
-  };
+  }, [hasEvents, day.events, day.date, onEventClick, onSelectDate]);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleDayClick();
+    }
+  }, [handleDayClick]);
 
   const baseClasses = `
     h-20 rounded-lg cursor-pointer transition-all duration-200
@@ -45,12 +50,7 @@ export default function CalendarDay({ day, onSelect, onEventClick }: CalendarDay
       role="button"
       tabIndex={0}
       aria-label={`${day.date.toLocaleDateString()}${hasEvents ? `, ${day.events.length} events - click to view details` : ''}`}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleDayClick();
-        }
-      }}
+      onKeyDown={handleKeyDown}
     >
       {/* Day number */}
       <div className={`text-sm font-medium mb-1 pl-2 self-start ${hasEvents ? 'text-white' : ''}`}>
@@ -75,4 +75,4 @@ export default function CalendarDay({ day, onSelect, onEventClick }: CalendarDay
 
     </div>
   );
-}
+});

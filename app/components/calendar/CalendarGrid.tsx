@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import { memo } from 'react';
 import { CalendarMonth, CalendarEvent } from '@/types/calendar';
 import { getDayNames } from '@/lib/calendar/utils';
 import CalendarDay from './CalendarDay';
@@ -13,7 +13,7 @@ interface CalendarGridProps {
   isLoading?: boolean;
 }
 
-export default function CalendarGrid({
+export default memo(function CalendarGrid({
   calendarMonth,
   onSelectDate,
   onEventClick,
@@ -71,11 +71,11 @@ export default function CalendarGrid({
           <CalendarDay
             key={`${day.date.getFullYear()}-${day.date.getMonth()}-${day.date.getDate()}-${index}`}
             day={day}
-            onSelect={() => onSelectDate(day.date)}
+            onSelectDate={onSelectDate}
             onEventClick={onEventClick}
           />
         ))}
       </div>
     </div>
   );
-}
+});
