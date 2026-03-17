@@ -52,5 +52,11 @@
     "title": "Zed Pro",
     "link": "https://zed.dev/education",
     "description": "AI-powered code editor like Cursor. Sign up with your .edu email for one year of Zed Pro for free. Includes $10 of AI tokens and unlimited edit predictions."
+  },
+  {
+    "id": "v0-premium-free-students",
+    "title": "v0 Premium",
+    "link": "https://v0.app/students",
+    "description": "AI website builder by Vercel. Generate websites and frontend mockups with the latest models. Get 1 year of free access with a ASU .edu email address."
   }
 ]
