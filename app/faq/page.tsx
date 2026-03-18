@@ -92,28 +92,19 @@ const GENERAL_FAQ_ITEMS: ReadonlyArray<FaqItem> = [
 const MEETING_FAQ_ITEMS: ReadonlyArray<FaqItem> = [
   {
     question:
-      "I attended the 03/16 meeting but still haven't received API access. What should I do?",
+      "I attended the 03/16 meeting but still haven't received Pro/API access. What should I do?",
     answer: (
       <>
-        If it has been more than 24 hours since the meeting and you still don't
-        have access, please follow up in the{" "}
-        <a
-          href="https://discord.com/channels/1414342988259262516/1414342989383340047/1483375015062933504"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline"
-        >
-          Discord thread
-        </a>{" "}
-        for the 03/16 meeting.
+        You should get it in a couple of business days. As to when exactly, I am
+        not sure. It is highly variable right now given that the access
+        procedure is abstracted over two different orgs (Wasserman + Anthropic).
       </>
     ),
   },
   {
     question:
       "I attended the 03/05 meeting, checked everything on this page, and still don't have access. What now?",
-    answer:
-      (
+    answer: (
       <>
         If you've read the entire FAQ page + checked{" "}
         <a
