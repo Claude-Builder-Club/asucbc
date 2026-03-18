@@ -98,6 +98,16 @@ const MEETING_FAQ_ITEMS: ReadonlyArray<FaqItem> = [
         You should get it in a couple of business days. As to when exactly, I am
         not sure. It is highly variable right now given that the access
         procedure is abstracted over two different orgs (Wasserman + Anthropic).
+        If you saw an error when you submitted the form,{" "}
+        <a
+          href="https://discord.com/channels/1414342988259262516/1414342989383340047/1483375015062933504"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          read this for more details
+        </a>
+        .
       </>
     ),
   },
