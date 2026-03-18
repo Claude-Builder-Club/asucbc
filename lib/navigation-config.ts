@@ -87,7 +87,7 @@ export const getNavigationItems = (): NavigationItem[] => {
       umamiEvent: "Nav - Contact",
       variant: "default",
     },
-    
+
     {
       label: "Apply",
       href: "/apply",
@@ -153,6 +153,19 @@ export const getNavigationItems = (): NavigationItem[] => {
       umamiEvent: "Header - Join Us",
       variant: "primary",
     },
+    {
+      label: "FAQ",
+      href: "/faq",
+      description: "Frequently Asked Questions in our Club",
+      category: "main",
+      showInHeader: true,
+      showInCommandMenu: true,
+      isExternal: false,
+      keywords: ["FAQ", "questions", "help", "support", "common issues"],
+      icon: "🤔",
+      umamiEvent: "Nav - FAQ",
+      variant: "primary",
+    }
   ];
 
   return items;

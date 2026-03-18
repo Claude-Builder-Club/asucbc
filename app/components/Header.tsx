@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import GradualBlur from "./ui/GradualBlur";
 import { getHeaderNavigationItems } from "@/lib/navigation-config";
 import CommandMenu from "./CommandMenu";
-import { showHackathonPromo } from "@/app/theme-config";
+// import { showHackathonPromo } from "@/app/theme-config";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -262,84 +262,38 @@ export default function Header() {
               className="lg:hidden overflow-hidden"
             >
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[var(--theme-card-bg)] backdrop-blur-sm border-t border-[var(--theme-card-border)] rounded-2xl">
-                <motion.div variants={mobileItemVariants}>
-                  <Link
-                    href="/about"
-                    className={`flex px-3 py-4 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10 transition-all duration-200 font-medium font-sans rounded-lg min-h-[48px] items-center touch-manipulation`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-umami-event="Mobile Nav - About"
-                  >
-                    About
-                  </Link>
-                </motion.div>
-                <motion.div variants={mobileItemVariants}>
-                  <Link
-                    href="/team"
-                    className={`flex px-3 py-4 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10 transition-all duration-200 font-medium font-sans rounded-lg min-h-[48px] items-center touch-manipulation`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-umami-event="Mobile Nav - Team"
-                  >
-                    Team
-                  </Link>
-                </motion.div>
-                <motion.div variants={mobileItemVariants}>
-                  <Link
-                    href="/industry"
-                    className={`flex px-3 py-4 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10 transition-all duration-200 font-medium font-sans rounded-lg min-h-[48px] items-center touch-manipulation`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-umami-event="Mobile Nav - Industry"
-                  >
-                    Industry
-                  </Link>
-                </motion.div>
-                <motion.div variants={mobileItemVariants}>
-                  <Link
-                    href="/contact"
-                    className={`flex px-3 py-4 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10 transition-all duration-200 font-medium font-sans rounded-lg min-h-[48px] items-center touch-manipulation`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-umami-event="Mobile Nav - Contact"
-                  >
-                    Contact
-                  </Link>
-                </motion.div>
-                <motion.div variants={mobileItemVariants}>
-                  <Link
-                    href="/apply"
-                    className={`flex px-3 py-4 text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10 transition-all duration-200 font-medium font-sans rounded-lg min-h-[48px] items-center touch-manipulation`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-umami-event="Mobile Nav - Apply"
-                  >
-                    Apply
-                  </Link>
-                </motion.div>
-                {showHackathonPromo && (
-                  <motion.div variants={mobileItemVariants}>
-                    <Link
-                      href="/hackathon2"
-                      className={`relative z-20 flex px-3 py-4 bg-[var(--theme-button-alternate-bg)] text-[var(--theme-button-alternate-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] transition-all duration-300 ease-in-out font-medium text-base font-sans border border-[var(--theme-button-alternate-border)] hover:border-[var(--theme-button-hover-border)] rounded-lg min-h-[48px] items-center touch-manipulation`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      data-umami-event="Mobile Nav - Hackathon"
-                    >
-                      Hackathon
-                    </Link>
-                  </motion.div>
-                )}
-                <motion.div variants={mobileItemVariants}>
-                  <Link
-                    href="https://docs.google.com/forms/d/e/1FAIpQLScP9LuFwiHEx806tv9zczjCIEzqO1Zjb-FjB4XWoa6BS1NNKQ/viewform"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`relative z-20 flex px-3 py-4 bg-[var(--theme-button-bg)] text-[var(--theme-button-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] transition-all duration-300 ease-in-out font-medium text-base font-sans border border-[var(--theme-button-border)] hover:border-[var(--theme-button-hover-border)] rounded-lg min-h-[48px] items-center touch-manipulation`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    data-umami-event="Mobile Nav - Join Us"
-                  >
-                    Join Us
-                  </Link>
-                </motion.div>
+                {navigationItems.map((item)=>{
+                  const isDefault = item.variant === "default" || !item.variant;
+                  const isPrimary = item.variant === "primary";
+
+                  const classes = isDefault
+                    ? "text-[var(--theme-text-primary)] hover:text-[var(--theme-text-accent)] hover:bg-[var(--theme-text-accent)]/10"
+                    : isPrimary
+                    ? "bg-[var(--theme-button-bg)] text-[var(--theme-button-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] transition-all duration-300 ease-in-out font-medium text-base font-sans border border-[var(--theme-button-border)] hover:border-[var(--theme-button-hover-border)]"
+                    : "bg-[var(--theme-button-alternate-bg)] text-[var(--theme-button-alternate-text)] hover:bg-[var(--theme-button-hover-bg)] hover:text-[var(--theme-button-hover-text)] transition-all duration-300 ease-in-out font-medium text-base font-sans border border-[var(--theme-button-alternate-border)] hover:border-[var(--theme-button-hover-border)]";
+
+                  return (
+                    <motion.div key={item.href} variants={mobileItemVariants}>
+                      <Link
+                        href={item.href}
+                        target={item.isExternal ? "_blank" : undefined}
+                        rel={
+                          item.isExternal ? "noopener noreferrer" : undefined
+                        }
+                        className={`flex px-3 py-4 ${classes} rounded-lg min-h-[48px] items-center touch-manipulation`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        data-umami-event={item.umamiEvent}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+        
       </div>
 
       {/* Command Menu */}
