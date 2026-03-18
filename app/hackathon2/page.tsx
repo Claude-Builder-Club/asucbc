@@ -73,12 +73,7 @@ interface TrackCardProps {
   delay?: number;
 }
 
-function TrackCard({
-  icon,
-  title,
-  description,
-  delay = 0,
-}: TrackCardProps) {
+function TrackCard({ icon, title, description, delay = 0 }: TrackCardProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -235,8 +230,8 @@ export default function Hackathon2() {
                     </span>{" "}
                     If you registered on Sun Devil Connect, you must also
                     register here to confirm your attendance. Non-ASU and
-                    graduated students are welcome to participate in the hackathon,
-                    but they are not eligible to receive prizes.
+                    graduated students are welcome to participate in the
+                    hackathon, but they are not eligible to receive prizes.
                   </p>
                 </div>
               </div>
@@ -386,18 +381,13 @@ export default function Hackathon2() {
               </h3>
               <ScheduleItem
                 time="9:00 AM"
-                title="Final Sprint"
+                title="Final Sprint + Check-In"
                 description="Polish your projects"
               />
               <ScheduleItem
                 time="2:00 PM"
                 title="Submissions Due"
                 description="Submit your projects for judging"
-              />
-              <ScheduleItem
-                time="3:00 PM"
-                title="Project Demos"
-                description="Present your work to judges"
               />
               <ScheduleItem
                 time="5:00 PM"
