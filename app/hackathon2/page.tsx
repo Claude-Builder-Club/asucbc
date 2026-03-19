@@ -234,6 +234,13 @@ export default function Hackathon2() {
                     hackathon, but they are not eligible to receive prizes.
                   </p>
                 </div>
+
+                {/* Non-ASU Students Note */}
+                <div className="p-4 bg-[var(--theme-text-accent)]/10 rounded-lg border-l-4 border-[var(--theme-text-accent)]">
+                  <p className="text-sm font-semibold text-[var(--theme-text-primary)]">
+                    <span className="text-[var(--theme-text-accent)]">📌 Note:</span> Non-ASU students are welcome to participate, but are not eligible to qualify for prizes.
+                  </p>
+                </div>
               </div>
             </Card>
           </motion.div>

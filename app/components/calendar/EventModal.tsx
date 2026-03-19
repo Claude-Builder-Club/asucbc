@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CalendarEvent } from '@/types/calendar';
 import DOMPurify from 'dompurify';
 import { useBatParticles } from '../../hooks/useBatParticles';
@@ -15,6 +15,7 @@ interface EventModalProps {
 
 export default function EventModal({ event, isOpen, onClose, onAddToCalendar }: EventModalProps) {
   const { containerRef, particlesRef, createParticles } = useBatParticles();
+  const descriptionRef = useRef<HTMLDivElement>(null);
   // Sanitize HTML content to prevent XSS while allowing safe tags like links
   const sanitizeHTML = (html: string): string => {
     // First, normalize self-closing tags to proper HTML format
@@ -47,6 +48,46 @@ export default function EventModal({ event, isOpen, onClose, onAddToCalendar }: 
       document.body.style.overflow = 'unset';
     };
   }, [onClose, isOpen]);
+
+  // Inject external link icons into description hyperlinks
+  useEffect(() => {
+    if (!descriptionRef.current) return;
+    const links = descriptionRef.current.querySelectorAll('a');
+    links.forEach((link) => {
+      // Skip if icon already added
+      if (link.querySelector('.description-link-icon')) return;
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+      link.style.textDecoration = 'underline';
+      link.style.textUnderlineOffset = '2px';
+      link.style.textDecorationColor = 'white';
+      link.style.color = 'var(--theme-text-primary)';
+      link.style.transition = 'color 0.2s ease, text-decoration-color 0.2s ease';
+      link.addEventListener('mouseenter', () => {
+        link.style.color = 'var(--theme-button-hover-bg)';
+        link.style.textDecorationColor = 'var(--theme-button-hover-bg)';
+      });
+      link.addEventListener('mouseleave', () => {
+        link.style.color = 'var(--theme-text-primary)';
+        link.style.textDecorationColor = 'white';
+      });
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '14');
+      svg.setAttribute('height', '14');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('stroke-width', '2');
+      svg.setAttribute('stroke-linecap', 'round');
+      svg.setAttribute('stroke-linejoin', 'round');
+      svg.setAttribute('class', 'description-link-icon');
+      svg.style.display = 'inline';
+      svg.style.verticalAlign = 'middle';
+      svg.style.marginLeft = '4px';
+      svg.innerHTML = '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>';
+      link.appendChild(svg);
+    });
+  }, [event?.description, isOpen]);
 
   if (!isOpen || !event) return null;
 
@@ -155,6 +196,7 @@ export default function EventModal({ event, isOpen, onClose, onAddToCalendar }: 
               <Heading level="h4" animate={false} className="text-[var(--theme-text-accent)] uppercase tracking-wide">Description</Heading>
               <div className="p-4 bg-[var(--theme-button-alternate-bg)] rounded-xl border border-[var(--theme-card-border)]">
                 <div
+                  ref={descriptionRef}
                   className="text-[var(--theme-text-primary)] text-sm leading-relaxed prose prose-sm max-w-none"
                   dangerouslySetInnerHTML={{ __html: sanitizeHTML(event.description) }}
                 />
