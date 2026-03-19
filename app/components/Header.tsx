@@ -259,7 +259,7 @@ export default function Header() {
               animate="visible"
               exit="exit"
               variants={mobileMenuVariants}
-              className="md:hidden overflow-hidden"
+              className="lg:hidden overflow-hidden"
             >
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[var(--theme-card-bg)] backdrop-blur-sm border-t border-[var(--theme-card-border)] rounded-2xl">
                 <motion.div variants={mobileItemVariants}>

@@ -5,12 +5,15 @@ import { getCalendarSubscriptionUrl } from '@/lib/calendar/google';
 import { Button } from '../ui';
 
 interface CalendarActionsProps {
-  calendarId: string;
   selectedDate?: Date | null;
 }
 
-export default function CalendarActions({ calendarId, selectedDate }: CalendarActionsProps) {
-  const subscriptionUrl = getCalendarSubscriptionUrl(calendarId);
+export default function CalendarActions({ selectedDate }: CalendarActionsProps) {
+  const subscriptionUrl = getCalendarSubscriptionUrl();
+
+  if (!subscriptionUrl) {
+    return null;
+  }
 
   const handleAddToCalendar = () => {
     window.open(subscriptionUrl, '_blank', 'noopener,noreferrer');

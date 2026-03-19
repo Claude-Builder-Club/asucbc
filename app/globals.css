@@ -290,6 +290,20 @@ body {
   transition: none !important;
 }
 
+/* Event modal description links: use CSS hover states instead of JS listeners. */
+.event-modal-description.prose a {
+  color: var(--theme-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: white;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.event-modal-description.prose a:hover {
+  color: var(--theme-button-hover-bg);
+  text-decoration-color: var(--theme-button-hover-bg);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

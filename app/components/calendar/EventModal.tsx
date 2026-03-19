@@ -56,21 +56,11 @@ export default function EventModal({ event, isOpen, onClose, onAddToCalendar }: 
     links.forEach((link) => {
       // Skip if icon already added
       if (link.querySelector('.description-link-icon')) return;
+
+      // Ensure description links open in a new tab safely.
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
-      link.style.textDecoration = 'underline';
-      link.style.textUnderlineOffset = '2px';
-      link.style.textDecorationColor = 'white';
-      link.style.color = 'var(--theme-text-primary)';
-      link.style.transition = 'color 0.2s ease, text-decoration-color 0.2s ease';
-      link.addEventListener('mouseenter', () => {
-        link.style.color = 'var(--theme-button-hover-bg)';
-        link.style.textDecorationColor = 'var(--theme-button-hover-bg)';
-      });
-      link.addEventListener('mouseleave', () => {
-        link.style.color = 'var(--theme-text-primary)';
-        link.style.textDecorationColor = 'white';
-      });
+
       const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('width', '14');
       svg.setAttribute('height', '14');
@@ -197,7 +187,7 @@ export default function EventModal({ event, isOpen, onClose, onAddToCalendar }: 
               <div className="p-4 bg-[var(--theme-button-alternate-bg)] rounded-xl border border-[var(--theme-card-border)]">
                 <div
                   ref={descriptionRef}
-                  className="text-[var(--theme-text-primary)] text-sm leading-relaxed prose prose-sm max-w-none"
+                  className="event-modal-description text-[var(--theme-text-primary)] text-sm leading-relaxed prose prose-sm max-w-none"
                   dangerouslySetInnerHTML={{ __html: sanitizeHTML(event.description) }}
                 />
               </div>

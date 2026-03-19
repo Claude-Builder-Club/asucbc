@@ -159,7 +159,6 @@ export default function CalendarContainer({ className = '' }: CalendarContainerP
         />
 
         <CalendarActions
-          calendarId={process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_ID || "asu.edu_primary"}
           selectedDate={calendarState.selectedDate}
         />
 
