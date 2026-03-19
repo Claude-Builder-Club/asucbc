@@ -129,7 +129,7 @@ function SponsorCard({
           <img
             src={logo}
             alt={`${name} logo`}
-            className="max-w-full max-h-full object-contain dark:invert dark:hue-rotate-180"
+            className={`max-w-full max-h-full object-contain ${name === "Airpost" ? "invert dark:invert-0" : "dark:invert dark:hue-rotate-180"}`}
           />
         </div>
       )}
@@ -500,12 +500,14 @@ export default function Hackathon2() {
             <SponsorCard
               name="Serpico AI Learning Center"
               url="https://www.ailearningcenter.ai/"
+              logo="/assets/hackathon/sponsors/serpico.avif"
               description="Hiring AI Operations Specialist (part-time)"
               delay={0}
             />
             <SponsorCard
               name="Airpost"
               url="https://www.airpost.ai/"
+              logo="/assets/hackathon/sponsors/airpost.svg"
               description="Hiring Full-Time AI SDE — technical & non-technical welcome"
               delay={0.05}
             />
@@ -519,6 +521,7 @@ export default function Hackathon2() {
             <SponsorCard
               name="Automation Interns"
               url="https://www.automationinterns.com/"
+              logo="/assets/hackathon/sponsors/automation-interns.png"
               description="Hiring AI SDE & Operations Interns"
               delay={0.15}
             />
@@ -532,6 +535,7 @@ export default function Hackathon2() {
             <SponsorCard
               name="Tamago Social"
               url="https://tamagosocial.dev/"
+              logo="/assets/hackathon/sponsors/tamago.webp"
               description="Turn GitHub commits into social posts"
               delay={0.25}
             />
