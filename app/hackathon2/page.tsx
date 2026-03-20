@@ -137,7 +137,7 @@ function SponsorCard({
         {name}
       </h3>
       {description && (
-        <p className="text-sm text-center text-[var(--theme-text-dark)] leading-relaxed">
+        <p className="text-sm text-center text-[var(--theme-text-dark)] leading-relaxed whitespace-pre-line">
           {description}
         </p>
       )}
@@ -545,6 +545,13 @@ export default function Hackathon2() {
               logo="/assets/hackathon/sponsors/tinyfish.svg"
               description="Free suite credits, prizes for social posts & cookbook PRs, accelerator golden tickets for winners. Hiring Product Growth Intern"
               delay={0.3}
+            />
+            <SponsorCard
+              name="ada."
+              url="https://tryada.app/"
+              logo="/assets/hackathon/sponsors/ada.png"
+              description={"The AI Secretary for your Phone.\nHiring AI SDE Intern — Summer 2026"}
+              delay={0.35}
             />
           </div>
         </div>
